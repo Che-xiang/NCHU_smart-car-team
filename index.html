@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--
+  南昌航空大学智能车队（智能车平台）官网 v3.2
+  ==========================================
+  · 切换模式仿照 Genesis 车队官网：每个板块是一整页（page-view），
+    点击导航在页面间切换（URL 带 #锚点，支持前进/后退）。
+  · 字号体系同样对齐参考站（大标题 clamp(42-82px) / 主标题 clamp(30-52px) / 正文 17px…）。
+  · 日常维护只需编辑 js/data.js；页面结构与样式一般不用动。
+  · 完整操作教程见《智能车队官网维护手册》Word 文档 / README.md。
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>南昌航空大学智能车队（智能车平台）</title>
+  <meta name="description" content="南昌航空大学智能车队（智能车平台）官网：1952 昌航血脉 · 从跑道到赛道。车队介绍、组织架构、技术方向、竞赛荣誉与招新信息。" />
+  <meta name="theme-color" content="#05070b" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 顶部细进度线 -->
+  <div class="progress" id="progressBar" aria-hidden="true"></div>
+
+  <!-- 示例提示（右上角胶囊，正式发布前把 data.js 的 status.enabled 改为 false） -->
+  <div class="notice" id="siteNotice" hidden>
+    <span class="notice-dot"></span><span class="notice-text"></span>
+    <button type="button" class="notice-close" aria-label="关闭提示">×</button>
+  </div>
+
+  <!-- ======== 顶部导航（点击切换整版页面） ======== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a class="brand" href="#home">
+        <img class="brand-logo" src="assets/favicon.svg" alt="车队徽标" />
+        <span class="brand-text">
+          <b>南昌航空大学 · 智能车队</b>
+          <small>NCHU / SMART VEHICLE PLATFORM</small>
+        </span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">首页</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#team">架构</a></li>
+        <li><a href="#tech">技术</a></li>
+        <li><a href="#honors">荣誉</a></li>
+        <li><a href="#competition">赛历</a></li>
+        <li><a href="#news">动态</a></li>
+        <li><a href="#faq">问答</a></li>
+        <li><a href="#join">加入</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="#join">了解招新</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ======== 首页：星空 / 光晕 / 赛道 / 内容（整版切换的第一页） ======== -->
+    <section class="hero page-view is-active" id="home">
+      <canvas class="star-canvas" id="starCanvas" aria-hidden="true"></canvas>
+      <div class="bg-glow g1" data-plx="-0.10" aria-hidden="true"></div>
+      <div class="bg-glow g2" data-plx="-0.14" aria-hidden="true"></div>
+
+      <!-- 赛道光轨层 -->
+      <svg class="track-svg" data-plx="0.06" viewBox="0 0 1200 540" aria-hidden="true">
+        <path class="ln l1" d="M170 270 A430 170 0 1 0 1030 270 A430 170 0 1 0 170 270" />
+        <circle class="racer r1" r="4.5">
+          <animateMotion dur="26s" repeatCount="indefinite"
+            path="M170 270 A430 170 0 1 0 1030 270 A430 170 0 1 0 170 270" />
+        </circle>
+        <path class="ln l2" d="M240 270 A360 130 0 1 0 960 270 A360 130 0 1 0 240 270" />
+        <circle class="racer r2" r="3">
+          <animateMotion dur="16s" begin="-8s" repeatCount="indefinite"
+            path="M960 270 A360 130 0 1 0 240 270 A360 130 0 1 0 960 270" />
+        </circle>
+      </svg>
+
+      <div class="hero-inner container" data-plx="0.26">
+        <p class="hero-eyebrow">NANCHANG HANGKONG UNIVERSITY · EST. 1952</p>
+        <h1 class="hero-title">智能车队<span class="thin">　智能车平台</span></h1>
+        <p class="hero-motto" id="heroMotto"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#join">了解招新</a>
+          <a class="btn btn-ghost" href="#honors">查看荣誉</a>
+        </div>
+        <!-- 首页统计条 -->
+        <div class="stats-strip" id="heroStats"></div>
+      </div>
+
+      <!-- 滚动字幕（首页信息条） -->
+      <div class="ticker-wrap" aria-hidden="true">
+        <div class="ticker" id="tickerTrack"></div>
+      </div>
+    </section>
+
+    <!-- ======== 关于我们 ======== -->
+    <section class="section page-view" id="about">
+      <div class="container rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">01</div>
+        <div class="sec-head">
+          <p class="kicker">ABOUT US</p>
+          <h2 class="sec-title">关于我们</h2>
+          <p class="sub" id="aboutSub"></p>
+        </div>
+        <div class="about-intro" id="aboutIntro"></div>
+
+        <div class="block-title"><span>昌航基因</span><em>NCHU DNA</em></div>
+        <div class="card-grid cols-4" id="geneGrid"></div>
+
+        <div class="block-title"><span>车队名片</span><em>TEAM PROFILE</em></div>
+        <div class="card-grid cols-4" id="aboutCards"></div>
+      </div>
+    </section>
+
+    <!-- ======== 组织架构 ======== -->
+    <section class="section alt page-view" id="team">
+      <div class="container rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">02</div>
+        <div class="sec-head">
+          <p class="kicker">ORGANIZATION</p>
+          <h2 class="sec-title">组织架构</h2>
+          <p class="sub">指导老师统筹把关，队长团组织训练，各组按智能车研发链路分工协作、整车联调。</p>
+        </div>
+        <div id="teacherCard"></div>
+        <div class="block-title"><span>技术组别</span><em>DIVISIONS</em></div>
+        <div class="card-grid cols-3" id="groupGrid"></div>
+        <p class="muted-note">组别名称与分工为示例框架，可在 js/data.js 中按车队实际调整。</p>
+      </div>
+    </section>
+
+    <!-- ======== 技术方向 ======== -->
+    <section class="section page-view" id="tech">
+      <div class="container rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">03</div>
+        <div class="sec-head">
+          <p class="kicker">RESEARCH &amp; ENGINEERING</p>
+          <h2 class="sec-title">技术方向</h2>
+          <p class="sub">围绕智能车平台的完整研发链路——感知、决策、控制、电控、硬件与机械协同，形成可验证、可复现、可传承的工程体系。</p>
+        </div>
+        <div class="card-grid cols-3" id="techGrid"></div>
+      </div>
+    </section>
+
+    <!-- ======== 竞赛荣誉 ======== -->
+    <section class="section alt page-view" id="honors">
+      <div class="container rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">04</div>
+        <div class="sec-head">
+          <p class="kicker">HONORS</p>
+          <h2 class="sec-title">竞赛荣誉</h2>
+          <p class="sub">以赛促学、以赛促研、以赛促创，用成绩说话。</p>
+        </div>
+        <div class="honor-row" id="honorChips"></div>
+        <div class="media-slot">
+          <span class="slot-line">CERTIFICATES &amp; TROPHIES</span>
+          <p>证书照片墙占位 —— 照片放入 assets/images/honors/ 后登记，见《维护手册》</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 历年赛况 ======== -->
+    <section class="section page-view" id="competition">
+      <div class="container rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">05</div>
+        <div class="sec-head">
+          <p class="kicker">RACE LOG</p>
+          <h2 class="sec-title">历年参赛情况</h2>
+          <p class="sub" id="compSub"></p>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>年份</th><th>赛事</th><th>组别 / 项目</th><th>成绩</th></tr>
+            </thead>
+            <tbody id="historyRows"></tbody>
+          </table>
+        </div>
+        <div class="media-slot">
+          <span class="slot-line">ON-TRACK FOOTAGE</span>
+          <p>比赛现场照片 / 视频占位 —— 建议 3~6 张横图（assets/images/races/）</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 车队动态 ======== -->
+    <section class="section alt page-view" id="news">
+      <div class="container rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">06</div>
+        <div class="sec-head">
+          <p class="kicker">NEWS</p>
+          <h2 class="sec-title">车队动态</h2>
+          <p class="sub">招新公告、集训日常与比赛捷报——每年更新 2~4 次即可。</p>
+        </div>
+        <div class="news-grid" id="newsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ======== 常见问答 ======== -->
+    <section class="section page-view" id="faq">
+      <div class="container narrow rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">07</div>
+        <div class="sec-head">
+          <p class="kicker">FAQ</p>
+          <h2 class="sec-title">常见问答</h2>
+          <p class="sub">关于加入车队的疑问，这里先回答一部分；更多问题欢迎在招新群里提问。</p>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- ======== 加入我们（最后一页，页脚并入本页） ======== -->
+    <section class="section alt page-view" id="join">
+      <div class="container rel join-wrap">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">08</div>
+        <div class="join-main">
+          <div class="sec-head left">
+            <p class="kicker">JOIN US</p>
+            <h2 class="sec-title">加入我们</h2>
+            <p class="sub">不限年级、不限专业，只要对智能车与技术有兴趣，就来试一试。</p>
+          </div>
+          <div class="join-list" id="joinList"></div>
+          <div class="join-actions" id="joinActions"></div>
+        </div>
+        <aside class="join-qr" id="joinQr"></aside>
+      </div>
+
+      <!-- 页脚（并入加入页末尾） -->
+      <footer class="site-footer" id="contact">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <p class="footer-brand-en">NANCHANG HANGKONG UNIVERSITY</p>
+              <h4>南昌航空大学 · 智能车队（智能车平台）</h4>
+              <p>从跑道到赛道 —— 让智能车平台在昌航起飞。</p>
+            </div>
+            <ul class="footer-links">
+              <li><a href="#about">关于我们</a></li>
+              <li><a href="#team">组织架构</a></li>
+              <li><a href="#tech">技术方向</a></li>
+              <li><a href="#honors">竞赛荣誉</a></li>
+              <li><a href="#join">加入我们</a></li>
+            </ul>
+            <div class="footer-contact">
+              <p>实验室位置 / <span id="fcLab">待补充</span></p>
+              <p>招新 QQ 群 / <span id="fcQQ">待补充</span></p>
+              <p>邮箱 / <span id="fcEmail">待补充</span></p>
+              <p>公众号 / <span id="fcWechat">待补充</span></p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>校训：日新自强 · 知行合一　—　昌航精神：团结自强 · 拼搏向上</p>
+            <p id="copyrightLine"></p>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <a class="totop" id="topBtn" href="#home" aria-label="返回顶部">↑</a>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/effects.js"></script>
+</body>
+</html>
