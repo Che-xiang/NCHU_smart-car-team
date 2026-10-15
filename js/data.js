@@ -170,7 +170,7 @@ const DATA = {
     ],
     qr: {
       hasImage: false,
-      image: "assets/images/join-qr.png",
+      image: "assets/images/team-2013.jpg",
       tip: "报名 / 招新群二维码，图片放入 assets/images/ 后启用（见《维护手册》）",
     },
   },
