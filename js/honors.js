@@ -4,8 +4,8 @@
   const root = document.getElementById("honorsArchive");
   const archive = window.HONORS_ARCHIVE;
   if (!root || !archive) return;
-  const records = archive.certificates.filter(item => item.role === "student");
-  const roles = { student: "队员证书" };
+  const records = archive.certificates.filter(item => ["student", "team"].includes(item.role));
+  const roles = { team: "团队证书", student: "队员证书" };
   const stages = { national: "全国总决赛", regional: "分赛区", history: "历史归档" };
   const batchSize = 12;
   let edition = null;
@@ -32,7 +32,7 @@
 
   const heading = el("div", "archive-heading");
   heading.append(el("p", "kicker", "HONORS ARCHIVE"), el("h3", "", "每一份荣誉，都有迹可循"),
-    el("p", "archive-muted", "选择届次，再按赛事阶段、组别和队伍查看队员获奖证书。"));
+    el("p", "archive-muted", "选择届次，再按赛事阶段、组别和队伍查看团队与队员获奖证书。个人证书未注明队名时，归入“队伍未标注”，不推断所属队伍。"));
   const editions = el("div", "archive-editions");
   editions.setAttribute("aria-label", "选择竞赛届次");
   const editionButtons = [];
@@ -95,13 +95,14 @@
     renderGroups();
     panelTitle.focus({ preventScroll: true });
   }
+  function stageLabel(key) { return edition.id === "20" && key === "regional" ? "华东赛区" : stages[key] || key; }
   function renderStages() {
     stageButtons.replaceChildren();
     const available = editionItems(edition.id);
     const keys = edition.id === "before19" ? distinct(available, "stage") : ["national", "regional"];
     keys.forEach(key => {
       const count = available.filter(item => item.stage === key).length;
-      const tab = button("archive-stage", (stages[key] || key) + " · " + count + "张", () => {
+      const tab = button("archive-stage", (stageLabel(key)) + " · " + count + "张", () => {
         stage = key;
         stageButtons.querySelectorAll("button").forEach(node => node.setAttribute("aria-pressed", String(node === tab)));
         renderGroups();
@@ -116,8 +117,8 @@
     const query = search.toLocaleLowerCase();
     const visible = all.filter(item => !query || [item.group, item.team, item.name, item.award, roles[item.role]].join(" ").toLocaleLowerCase().includes(query));
     gallery = visible;
-    status.textContent = (stages[stage] || stage) + " · " + distinct(visible, "group").length + " 个组别 · " +
-      new Set(visible.map(item => item.group + "/" + item.team)).size + " 支队伍 · " + visible.length + " 张证书" +
+    status.textContent = (stageLabel(stage)) + " · " + distinct(visible, "group").length + " 个组别 · " +
+      new Set(visible.map(item => item.group + "/" + item.team)).size + " 个归档栏 · " + visible.length + " 张证书" +
       (search ? "（搜索结果）" : "；证书张数不等于获奖项数。");
     if (!visible.length) {
       groups.append(el("p", "archive-empty", search ? "没有找到匹配的证书，请更换关键词或切换赛事阶段。" : "本专区暂未收录该阶段的证书，后续上传后会在这里显示。"));
@@ -128,7 +129,7 @@
       const detail = el("details", "archive-group");
       const summary = el("summary", "archive-summary");
       summary.append(el("span", "archive-summary-title", name),
-        el("span", "archive-summary-count", distinct(items, "team").length + " 支队伍 / " + items.length + " 张"));
+        el("span", "archive-summary-count", distinct(items, "team").length + " 个归档栏 / " + items.length + " 张"));
       detail.append(summary);
       const content = el("div", "archive-group-content");
       distinct(items, "team").forEach(team => content.append(teamDetails(team, items.filter(item => item.team === team))));

@@ -1,7 +1,7 @@
 # 南昌航空大学智能车队（智能车平台）官网 v3
 
 纯静态网页项目：**HTML + CSS + JavaScript，无框架、无构建步骤、无任何网络依赖**（可完全离线运行）。
-所有文字与数据集中在 **`js/data.js`** 一个文件里，日常维护只需要改它。
+赛历、动态等文字维护在 **`js/data.js`**；奖状目录维护在 **`js/honors-data.js`**；活动图库在 **`index.html`**。
 
 ## 文件结构
 
@@ -9,12 +9,12 @@
 ├── index.html            页面结构（通常不用改）
 ├── css/style.css         全站样式（换主题色改 :root 顶部变量）
 ├── js/
-│   ├── data.js   ★★★ 所有文字、数据都在这里，日常维护改它即可
+│   ├── data.js             常规文字与数据
 │   ├── main.js          内容渲染 + 线性图标库（通常不用改）
 │   └── effects.js       多层视差 / 星尘 / 进度条（通常不用改）
 ├── assets/
 │   ├── favicon.svg       站点小图标
-│   └── images/           图片目录（见 images/README.txt）
+│   └── images/           奖状与活动图片目录
 └── README.md
 ```
 
