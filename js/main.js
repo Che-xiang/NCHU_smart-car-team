@@ -135,17 +135,6 @@
   /* ---------- 组织架构页 ---------- */
   function renderTeam() {
     if (!DATA.team) return;
-    const t = DATA.team.teacher;
-    if (t) {
-      const card = tag("div", "teacher-card reveal");
-      card.appendChild(tag("div", "char-badge big", t.tag || "师"));
-      const body = tag("div", "teacher-body");
-      body.appendChild(tag("h4", "", t.name));
-      body.appendChild(tag("p", "duty", t.duty));
-      body.appendChild(tag("p", "muted", t.intro));
-      card.appendChild(body);
-      $("#teacherCard").appendChild(card);
-    }
     const groupCard = (g) => {
       const card = tag("div", "card group-card");
       const head = tag("div", "group-head");
@@ -421,4 +410,5 @@
     boot();
   }
 })();
+
 

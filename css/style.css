@@ -380,18 +380,6 @@ button { font-family: inherit; }
 .about-p:last-child { margin-bottom: 0; }
 
 /* ---------- 组织架构页 ---------- */
-.teacher-card {
-  position: relative; z-index: 1;
-  display: flex; align-items: center; gap: 28px;
-  width: min(760px, 100%); margin: 0 auto 6px;
-  padding: 30px 34px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-}
-.teacher-body h4 { font-size: 24px; font-weight: 700; letter-spacing: 0.02em; }
-.teacher-body .duty { font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; color: rgba(125, 211, 252, 0.9); margin: 6px 0 12px; }
-.teacher-body .muted { color: var(--muted); font-size: 16px; line-height: 1.9; }
 .group-card .group-head { display: flex; align-items: center; gap: 16px; }
 
 /* ---------- 荣誉页 ---------- */
@@ -627,10 +615,10 @@ button { font-family: inherit; }
   .news-grid { grid-template-columns: 1fr; }
   .honor-row { grid-template-columns: 1fr; }
   .honor-chip + .honor-chip { border-left: 0; border-top: 1px solid var(--line); }
-  .teacher-card { flex-direction: column; text-align: center; padding: 28px 22px; }
   .footer-grid { grid-template-columns: 1fr; gap: 30px; }
   .block-title { margin-top: 46px; }
   .notice { font-size: 12px; }
   .section.page-view { padding-top: 100px; padding-bottom: 60px; }
 }
+
 

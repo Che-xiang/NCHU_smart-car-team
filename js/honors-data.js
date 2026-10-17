@@ -28,17 +28,6 @@ window.HONORS_ARCHIVE = {
       "stage": "national",
       "group": "飞跃雷区",
       "team": "凌空长虹",
-      "role": "team",
-      "name": "团队",
-      "award": "二等奖",
-      "image": "assets/images/honors/21/national/minefield/lingkong-changhong/team.jpg",
-      "thumbnail": "assets/images/honors/21/national/minefield/lingkong-changhong/team-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "national",
-      "group": "飞跃雷区",
-      "team": "凌空长虹",
       "role": "student",
       "name": "陈翔",
       "award": "二等奖",
@@ -92,39 +81,6 @@ window.HONORS_ARCHIVE = {
     {
       "edition": "21",
       "stage": "national",
-      "group": "飞跃雷区",
-      "team": "凌空长虹",
-      "role": "teacher",
-      "name": "胡志伟",
-      "award": "二等奖",
-      "image": "assets/images/honors/21/national/minefield/lingkong-changhong/hu-zhiwei.jpg",
-      "thumbnail": "assets/images/honors/21/national/minefield/lingkong-changhong/hu-zhiwei-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "national",
-      "group": "飞跃雷区",
-      "team": "凌空长虹",
-      "role": "teacher",
-      "name": "陈飞龙",
-      "award": "二等奖",
-      "image": "assets/images/honors/21/national/minefield/lingkong-changhong/chen-feilong.jpg",
-      "thumbnail": "assets/images/honors/21/national/minefield/lingkong-changhong/chen-feilong-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "national",
-      "group": "雁过留痕本科组",
-      "team": "主的“水滴”",
-      "role": "team",
-      "name": "团队",
-      "award": "二等奖",
-      "image": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/team.jpg",
-      "thumbnail": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/team-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "national",
       "group": "雁过留痕本科组",
       "team": "主的“水滴”",
       "role": "student",
@@ -154,38 +110,6 @@ window.HONORS_ARCHIVE = {
       "award": "二等奖",
       "image": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/shi-siqi.jpg",
       "thumbnail": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/shi-siqi-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "national",
-      "group": "雁过留痕本科组",
-      "team": "主的“水滴”",
-      "role": "teacher",
-      "name": "廖远",
-      "award": "二等奖",
-      "image": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/liao-yuan.jpg",
-      "thumbnail": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/liao-yuan-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "national",
-      "group": "雁过留痕本科组",
-      "team": "主的“水滴”",
-      "role": "teacher",
-      "name": "彭建坤",
-      "award": "二等奖",
-      "image": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/peng-jiankun.jpg",
-      "thumbnail": "assets/images/honors/21/national/tracking-undergraduate/zhude-shuidi/peng-jiankun-thumb.webp"
-    },
-    {
-      "edition": "before19",
-      "stage": "regional",
-      "group": "第8届 · 2013年",
-      "team": "华东赛区 · 电磁组",
-      "role": "team",
-      "name": "2013年获奖证书",
-      "award": "",
-      "image": "assets/images/honors/award-2013-01.jpg"
     },
     {
       "edition": "21",
@@ -223,28 +147,6 @@ window.HONORS_ARCHIVE = {
     {
       "edition": "21",
       "stage": "regional",
-      "group": "疯狂电路",
-      "team": "NCHU-狂焰疾驰",
-      "role": "teacher",
-      "name": "刘辉",
-      "award": "一等奖（第10名）",
-      "image": "assets/images/honors/21/regional/crazy-circuit/nchu-kuangyan-jichi/liu-hui.jpg",
-      "thumbnail": "assets/images/honors/21/regional/crazy-circuit/nchu-kuangyan-jichi/liu-hui-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
-      "group": "疯狂电路",
-      "team": "NCHU-狂焰疾驰",
-      "role": "teacher",
-      "name": "杨焱",
-      "award": "一等奖（第10名）",
-      "image": "assets/images/honors/21/regional/crazy-circuit/nchu-kuangyan-jichi/yang-yan.jpg",
-      "thumbnail": "assets/images/honors/21/regional/crazy-circuit/nchu-kuangyan-jichi/yang-yan-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
       "group": "雁过留痕本科组",
       "team": "主的“水滴”",
       "role": "student",
@@ -278,28 +180,6 @@ window.HONORS_ARCHIVE = {
     {
       "edition": "21",
       "stage": "regional",
-      "group": "雁过留痕本科组",
-      "team": "主的“水滴”",
-      "role": "teacher",
-      "name": "廖远",
-      "award": "一等奖（第1名）",
-      "image": "assets/images/honors/21/regional/tracking-undergraduate/zhude-shuidi/liao-yuan.jpg",
-      "thumbnail": "assets/images/honors/21/regional/tracking-undergraduate/zhude-shuidi/liao-yuan-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
-      "group": "雁过留痕本科组",
-      "team": "主的“水滴”",
-      "role": "teacher",
-      "name": "彭建坤",
-      "award": "一等奖（第1名）",
-      "image": "assets/images/honors/21/regional/tracking-undergraduate/zhude-shuidi/peng-jiankun.jpg",
-      "thumbnail": "assets/images/honors/21/regional/tracking-undergraduate/zhude-shuidi/peng-jiankun-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
       "group": "飞檐走壁（本科）",
       "team": "志宇成豪",
       "role": "student",
@@ -329,28 +209,6 @@ window.HONORS_ARCHIVE = {
       "award": "二等奖（第22名）",
       "image": "assets/images/honors/21/regional/wall-climbing-undergraduate/zhiyu-chenghao/huang-huajia.jpg",
       "thumbnail": "assets/images/honors/21/regional/wall-climbing-undergraduate/zhiyu-chenghao/huang-huajia-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
-      "group": "飞檐走壁（本科）",
-      "team": "志宇成豪",
-      "role": "teacher",
-      "name": "刘清平",
-      "award": "二等奖（第22名）",
-      "image": "assets/images/honors/21/regional/wall-climbing-undergraduate/zhiyu-chenghao/liu-qingping.jpg",
-      "thumbnail": "assets/images/honors/21/regional/wall-climbing-undergraduate/zhiyu-chenghao/liu-qingping-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
-      "group": "飞檐走壁（本科）",
-      "team": "志宇成豪",
-      "role": "teacher",
-      "name": "赵珂",
-      "award": "二等奖（第22名）",
-      "image": "assets/images/honors/21/regional/wall-climbing-undergraduate/zhiyu-chenghao/zhao-ke.jpg",
-      "thumbnail": "assets/images/honors/21/regional/wall-climbing-undergraduate/zhiyu-chenghao/zhao-ke-thumb.webp"
     },
     {
       "edition": "21",
@@ -406,28 +264,6 @@ window.HONORS_ARCHIVE = {
       "award": "一等奖（第6名）",
       "image": "assets/images/honors/21/regional/minefield/lingkong-changhong/qiu-liuyue.jpg",
       "thumbnail": "assets/images/honors/21/regional/minefield/lingkong-changhong/qiu-liuyue-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
-      "group": "飞跃雷区",
-      "team": "凌空长虹",
-      "role": "teacher",
-      "name": "胡志伟",
-      "award": "一等奖（第6名）",
-      "image": "assets/images/honors/21/regional/minefield/lingkong-changhong/hu-zhiwei.jpg",
-      "thumbnail": "assets/images/honors/21/regional/minefield/lingkong-changhong/hu-zhiwei-thumb.webp"
-    },
-    {
-      "edition": "21",
-      "stage": "regional",
-      "group": "飞跃雷区",
-      "team": "凌空长虹",
-      "role": "teacher",
-      "name": "陈飞龙",
-      "award": "一等奖（第6名）",
-      "image": "assets/images/honors/21/regional/minefield/lingkong-changhong/chen-feilong.jpg",
-      "thumbnail": "assets/images/honors/21/regional/minefield/lingkong-changhong/chen-feilong-thumb.webp"
     }
   ]
 };

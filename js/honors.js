@@ -4,8 +4,8 @@
   const root = document.getElementById("honorsArchive");
   const archive = window.HONORS_ARCHIVE;
   if (!root || !archive) return;
-  const records = archive.certificates;
-  const roles = { team: "团队证书", student: "队员证书", teacher: "指导教师证书" };
+  const records = archive.certificates.filter(item => item.role === "student");
+  const roles = { student: "队员证书" };
   const stages = { national: "全国总决赛", regional: "分赛区", history: "历史归档" };
   const batchSize = 12;
   let edition = null;
@@ -32,7 +32,7 @@
 
   const heading = el("div", "archive-heading");
   heading.append(el("p", "kicker", "HONORS ARCHIVE"), el("h3", "", "每一份荣誉，都有迹可循"),
-    el("p", "archive-muted", "选择届次，再按赛事阶段、组别和队伍查看。团队、队员与指导教师证书分别归档。"));
+    el("p", "archive-muted", "选择届次，再按赛事阶段、组别和队伍查看队员获奖证书。"));
   const editions = el("div", "archive-editions");
   editions.setAttribute("aria-label", "选择竞赛届次");
   const editionButtons = [];
@@ -255,3 +255,4 @@
     close.focus();
   }
 })();
+
