@@ -29,6 +29,10 @@
   }
   function distinct(items, key) { return [...new Set(items.map(item => item[key]))]; }
   function editionItems(id) { return records.filter(item => item.edition === id); }
+  function thumbnailPath(item) {
+    if (item.thumbnail) return item.thumbnail;
+    return item.image.replace("assets/images/honors/", "assets/images/honors-thumbs/").replace(/\.jpe?g$/i, ".webp");
+  }
 
   const heading = el("div", "archive-heading");
   heading.append(el("p", "kicker", "HONORS ARCHIVE"), el("h3", "", "每一份荣誉，都有迹可循"),
@@ -180,10 +184,11 @@
     const card = button("archive-certificate", "", () => openViewer(item, card));
     card.setAttribute("aria-label", "查看" + item.team + " · " + item.name + "的" + roles[item.role]);
     const image = el("img", "");
-    image.src = item.thumbnail || item.image;
+    image.src = thumbnailPath(item);
     image.alt = item.team + " · " + item.name + " · " + (item.award || "获奖证书");
     image.loading = "lazy";
     image.decoding = "async";
+    image.fetchPriority = "low";
     image.width = 320;
     image.height = 452;
     image.addEventListener("error", () => {
@@ -204,6 +209,7 @@
   const close = button("archive-close", "关闭 ×", () => viewer.close());
   bar.append(caption, close);
   const fullImage = el("img", "archive-full-image");
+  fullImage.decoding = "async";
   const error = el("p", "archive-empty", "图片暂时无法加载，请使用“打开高清图”链接查看。");
   error.hidden = true;
   fullImage.addEventListener("error", () => { error.hidden = false; fullImage.hidden = true; });

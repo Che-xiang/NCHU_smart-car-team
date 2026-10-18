@@ -165,6 +165,95 @@
     renderCards("#techGrid", DATA.tech, techCard);
   }
 
+  function sectionTitle(title, english) {
+    const heading = tag("div", "block-title activity-heading");
+    heading.append(tag("span", "", title), tag("em", "", english));
+    return heading;
+  }
+
+  function renderSupplementalContent() {
+    const techGrid = $("#techGrid");
+    const firstExistingProject = document.querySelector("#tech .project-grid");
+    if (techGrid && firstExistingProject && (DATA.featuredProjects || []).length) {
+      const heading = sectionTitle("第21届竞赛组别", "2026 RACE PROJECTS");
+      const intro = tag("p", "sub", "四个组别对应不同赛题，覆盖立体电磁循迹、路线覆盖、空地协同和紫外目标留痕。");
+      const grid = tag("div", "project-grid project-grid-featured");
+      DATA.featuredProjects.forEach((item) => {
+        const card = tag("article", "project-card");
+        const link = document.createElement("a");
+        link.href = item.image;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.setAttribute("aria-label", "查看第21届" + item.group + "组作品大图");
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = "第21届" + item.group + "组：" + item.name;
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.fetchPriority = "low";
+        image.width = item.width;
+        image.height = item.height;
+        link.appendChild(image);
+        const body = tag("div", "project-body");
+        body.append(tag("p", "kicker", "第21届 · " + item.group), tag("h4", "", item.name), tag("p", "", item.text));
+        const tags = tag("ul", "project-tags");
+        (item.tags || []).forEach((value) => tags.appendChild(tag("li", "", value)));
+        body.appendChild(tags);
+        card.append(link, body);
+        grid.appendChild(card);
+      });
+      techGrid.after(heading, intro, grid);
+    }
+
+    const techContainer = document.querySelector("#tech .container");
+    if (techContainer && (DATA.learningPath || []).length) {
+      techContainer.append(sectionTitle("工程训练与成长路线", "LEARNING PATH"));
+      techContainer.append(tag("p", "sub", "从能运行的小功能开始，逐步完成独立验证、整车联调和可复现的工程成果。正式训练安排以车队通知为准。"));
+      const grid = tag("div", "research-project-grid learning-path-grid");
+      DATA.learningPath.forEach((item) => {
+        const card = tag("article", "research-project");
+        card.append(tag("span", "project-date", item.step), tag("h4", "", item.name), tag("p", "", item.text));
+        grid.appendChild(card);
+      });
+      techContainer.appendChild(grid);
+    }
+
+    const news = document.querySelector("#news .container");
+    const marker = Array.from(document.querySelectorAll("#news .activity-heading")).find(node => node.textContent.includes("赛道训练与整车联调"));
+    if (news && marker && (DATA.preparationGallery || []).length) {
+      const heading = sectionTitle("备赛纪实", "PREPARATION LOG");
+      const intro = tag("p", "sub", "从场地准备到集中联调，记录成员围绕同一赛道反复测试与复盘的过程。");
+      const gallery = tag("div", "activity-gallery");
+      DATA.preparationGallery.forEach((item) => {
+        const figure = tag("figure", "activity-photo");
+        const link = document.createElement("a");
+        link.href = item.image;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.setAttribute("aria-label", "打开大图：" + item.title);
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = item.title;
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.fetchPriority = "low";
+        image.width = item.width;
+        image.height = item.height;
+        link.appendChild(image);
+        const caption = document.createElement("figcaption");
+        caption.append(tag("strong", "", item.title), tag("p", "", item.text));
+        const original = tag("a", "activity-original", "查看大图 ↗");
+        original.href = item.image;
+        original.target = "_blank";
+        original.rel = "noopener noreferrer";
+        caption.appendChild(original);
+        figure.append(link, caption);
+        gallery.appendChild(figure);
+      });
+      marker.before(heading, intro, gallery);
+    }
+  }
+
   /* ---------- 荣誉页 ---------- */
   function renderHonors() {
     const row = $("#honorChips");
@@ -214,6 +303,7 @@
           im.alt = image.alt || n.title || "";
           im.loading = "lazy";
           im.decoding = "async";
+          im.fetchPriority = "low";
           link.appendChild(im);
           media.appendChild(link);
         });
@@ -270,8 +360,12 @@
       const img = document.createElement("img");
       img.src = q.image;
       img.alt = "报名二维码";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.width = 800;
+      img.height = 800;
       qrBox.appendChild(img);
-      qrBox.appendChild(tag("p", "qr-tip", "SCAN TO JOIN"));
+      qrBox.appendChild(tag("p", "qr-tip", q.tip || "SCAN TO JOIN"));
     } else {
       const ph = tag("div", "qr-ph");
       ph.appendChild(tag("b", "", "QR 占位"));
@@ -409,6 +503,7 @@
     renderHonors();
     renderCompetition();
     renderNews();
+    renderSupplementalContent();
     renderFaq();
     renderJoin();
     renderFooter();
