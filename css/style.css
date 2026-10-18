@@ -634,6 +634,10 @@ button { font-family: inherit; }
 .activity-photo p { margin-top:8px; color:var(--text-2); font-size:14px; }
 .activity-original { display:inline-block; margin-top:12px; color:var(--acc); font-size:13px; }
 .news-img { object-fit:contain; background:var(--bg-2); }
+.news-media > a { display:block; height:100%; background:var(--bg-2); }
+.news-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.news-gallery > a + a { border-left:1px solid var(--line); }
+.news-gallery .news-img { height:100%; object-fit:cover; }
 @media(max-width:640px) { .activity-gallery { grid-template-columns:1fr; } .activity-photo img { height:auto; max-height:420px; } }
 
 /* Student project portfolio */

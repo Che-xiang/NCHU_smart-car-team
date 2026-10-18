@@ -188,21 +188,35 @@
     });
   }
 
-  /* ---------- 动态页（img 为可选配图字段） ---------- */
+  /* ---------- 动态页（img 为单图，images 为同一动态的多图） ---------- */
   function renderNews() {
     const grid = $("#newsGrid");
     (DATA.news || []).forEach((n, i) => {
       const card = tag("article", "news-card reveal");
       card.style.transitionDelay = (i % 3) * 100 + "ms";
 
-      if (n.img) {
-        const media = tag("div", "news-media");
-        const im = document.createElement("img");
-        im.className = "news-img";
-        im.src = n.img;
-        im.alt = n.title || "";
-        im.loading = "lazy";
-        media.appendChild(im);
+      const images = Array.isArray(n.images) && n.images.length
+        ? n.images
+        : (n.img ? [{ src: n.img, alt: n.title || "" }] : []);
+
+      if (images.length) {
+        const media = tag("div", "news-media" + (images.length > 1 ? " news-gallery" : ""));
+        images.forEach((image, imageIndex) => {
+          const link = document.createElement("a");
+          link.href = image.src;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.setAttribute("aria-label", "查看大图：" + (image.alt || n.title || ("动态配图 " + (imageIndex + 1))));
+
+          const im = document.createElement("img");
+          im.className = "news-img";
+          im.src = image.src;
+          im.alt = image.alt || n.title || "";
+          im.loading = "lazy";
+          im.decoding = "async";
+          link.appendChild(im);
+          media.appendChild(link);
+        });
         card.appendChild(media);
       } else {
         const ph = tag("div", "news-media news-ph");
