@@ -16,8 +16,8 @@
   <meta name="description" content="南昌航空大学智能车队（智能车平台）官网：1952 昌航血脉 · 从跑道到赛道。车队介绍、组织架构、技术方向、竞赛荣誉与招新信息。" />
   <meta name="theme-color" content="#05070b" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="css/style.css?v=20261019-3" />
-  <link rel="stylesheet" href="css/honors.css?v=20261019-3" />
+  <link rel="stylesheet" href="css/style.css?v=20261019-4" />
+  <link rel="stylesheet" href="css/honors.css?v=20261019-4" />
 </head>
 <body>
 
@@ -52,6 +52,7 @@
         <li><a href="#competition">赛历</a></li>
         <li><a href="#news">动态</a></li>
         <li><a href="#faq">问答</a></li>
+        <li><a href="#guestbook">留言</a></li>
         <li><a href="#join">加入</a></li>
       </ul>
       <a class="btn btn-primary nav-cta" href="#join">了解招新</a>
@@ -86,6 +87,7 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="#join">了解招新</a>
           <a class="btn btn-ghost" href="#honors">查看荣誉</a>
+          <a class="btn btn-ghost" href="#guestbook">给车队留言</a>
         </div>
         <!-- 首页统计条 -->
         <div class="stats-strip" id="heroStats"></div>
@@ -215,10 +217,57 @@
       </div>
     </section>
 
+    <!-- ======== 留言板：提交后由车队审核公开 ======== -->
+    <section class="section alt page-view" id="guestbook">
+      <div class="container rel">
+        <div class="wm" data-plx="-0.12" aria-hidden="true">08</div>
+        <div class="sec-head left guestbook-head">
+          <p class="kicker">CONTACT &amp; GUESTBOOK</p>
+          <h2 class="sec-title">给智能车队留言</h2>
+          <p class="sub">欢迎提交建议、合作意向或想了解的问题。留言经车队审核后，将在下方公开展示。</p>
+        </div>
+
+        <div class="guestbook-layout">
+          <div class="guestbook-intro">
+            <p class="kicker">联系我们</p>
+            <h3>让每一次交流<br>都成为新的起点</h3>
+            <p>填写昵称和留言内容，点击提交后将进入 GitHub 留言页面。完成发布并通过审核后，留言会自动出现在公开留言板。</p>
+            <div class="guestbook-note">
+              <strong>公开说明</strong>
+              <span>请勿填写手机号、身份证号、住址等隐私信息。提交留言需要登录 GitHub。</span>
+            </div>
+          </div>
+
+          <form class="guestbook-form" id="guestbookForm">
+            <label for="guestbookNickname">称呼 <span>选填</span></label>
+            <input id="guestbookNickname" name="nickname" type="text" maxlength="24" placeholder="你的称呼" autocomplete="nickname">
+            <label for="guestbookMessage">留言内容</label>
+            <textarea id="guestbookMessage" name="message" maxlength="500" required placeholder="请输入留言内容"></textarea>
+            <div class="guestbook-form-foot">
+              <span id="guestbookCount">0/500</span>
+              <button class="btn btn-primary" type="submit">提交留言</button>
+            </div>
+            <p class="guestbook-submit-note" id="guestbookSubmitNote">提交后会打开 GitHub，请确认内容并完成发布。</p>
+          </form>
+        </div>
+
+        <div class="guestbook-public-head">
+          <div>
+            <p class="kicker">PUBLIC MESSAGES</p>
+            <h3>公开留言</h3>
+          </div>
+          <span>经车队审核后展示</span>
+        </div>
+        <div class="guestbook-grid" id="guestbookGrid" aria-live="polite">
+          <p class="guestbook-loading">正在读取已审核留言…</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ======== 加入我们（最后一页，页脚并入本页） ======== -->
     <section class="section alt page-view" id="join">
       <div class="container rel join-wrap">
-        <div class="wm" data-plx="-0.12" aria-hidden="true">08</div>
+        <div class="wm" data-plx="-0.12" aria-hidden="true">09</div>
         <div class="join-main">
           <div class="sec-head left">
             <p class="kicker">JOIN US</p>
@@ -245,6 +294,7 @@
               <li><a href="#team">组织架构</a></li>
               <li><a href="#tech">技术方向</a></li>
               <li><a href="#honors">竞赛荣誉</a></li>
+              <li><a href="#guestbook">公开留言</a></li>
               <li><a href="#join">加入我们</a></li>
             </ul>
             <div class="footer-contact">
@@ -265,11 +315,11 @@
 
   <a class="totop" id="topBtn" href="#home" aria-label="返回顶部">↑</a>
 
-  <script src="js/data.js?v=20261019-3"></script>
-  <script src="js/honors-data.js?v=20261019-3"></script>
-  <script src="js/main.js?v=20261019-3"></script>
-  <script src="js/honors.js?v=20261019-3"></script>
-  <script src="js/effects.js?v=20261019-3"></script>
+  <script src="js/data.js?v=20261019-4"></script>
+  <script src="js/honors-data.js?v=20261019-4"></script>
+  <script src="js/main.js?v=20261019-4"></script>
+  <script src="js/honors.js?v=20261019-4"></script>
+  <script src="js/effects.js?v=20261019-4"></script>
 </body>
 </html>
 

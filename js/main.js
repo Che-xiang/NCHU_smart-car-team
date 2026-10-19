@@ -386,6 +386,107 @@
       " 南昌航空大学智能车队（智能车平台）· 页面由车队成员维护 · 以赛促学，笃行致远";
   }
 
+  /* ---------- 留言板：GitHub Issues 提交 + 审核标签展示 ---------- */
+  function initGuestbook() {
+    const form = $("#guestbookForm");
+    const nickname = $("#guestbookNickname");
+    const message = $("#guestbookMessage");
+    const counter = $("#guestbookCount");
+    const note = $("#guestbookSubmitNote");
+    const grid = $("#guestbookGrid");
+    if (!form || !nickname || !message || !counter || !grid) return;
+
+    const repo = "Che-xiang/NCHU_smart-car-team";
+    const approvedLabel = "guestbook-approved";
+
+    function updateCounter() {
+      counter.textContent = message.value.length + "/500";
+    }
+    message.addEventListener("input", updateCounter);
+    updateCounter();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const author = nickname.value.trim() || "匿名访客";
+      const content = message.value.trim();
+      if (!content) {
+        message.focus();
+        note.textContent = "请先填写留言内容。";
+        note.classList.add("is-error");
+        return;
+      }
+
+      const title = "[留言] " + author;
+      const body = [
+        "<!-- guestbook-message -->",
+        content,
+        "",
+        "---",
+        "昵称：" + author,
+        "来源：南昌航空大学智能车队官网留言板",
+        "审核说明：管理员确认内容后，请添加 `" + approvedLabel + "` 标签。"
+      ].join("\n");
+      const url = "https://github.com/" + repo + "/issues/new?title=" +
+        encodeURIComponent(title) + "&body=" + encodeURIComponent(body);
+      const link = document.createElement("a");
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      note.textContent = "已打开 GitHub 提交页面。完成发布后，待车队审核即可公开展示。";
+      note.classList.remove("is-error");
+    });
+
+    function approvedMessage(issue) {
+      const article = tag("article", "guestbook-card");
+      const text = (issue.body || "")
+        .replace(/<!--\s*guestbook-message\s*-->/i, "")
+        .split(/\n---\n/)[0]
+        .trim()
+        .slice(0, 500);
+      const author = (issue.title || "")
+        .replace(/^\[留言\]\s*/i, "")
+        .trim() || (issue.user && issue.user.login) || "访客";
+      const date = new Intl.DateTimeFormat("zh-CN", {
+        year: "numeric", month: "2-digit", day: "2-digit"
+      }).format(new Date(issue.created_at));
+      article.appendChild(tag("p", "guestbook-message", text || "留言内容暂不可用"));
+      const meta = tag("div", "guestbook-meta");
+      meta.appendChild(tag("strong", "", author));
+      const open = tag("a", "", date);
+      open.href = issue.html_url;
+      open.target = "_blank";
+      open.rel = "noopener noreferrer";
+      open.setAttribute("aria-label", "在 GitHub 查看这条留言");
+      meta.appendChild(open);
+      article.appendChild(meta);
+      return article;
+    }
+
+    const endpoint = "https://api.github.com/repos/" + repo +
+      "/issues?state=all&labels=" + encodeURIComponent(approvedLabel) +
+      "&sort=created&direction=desc&per_page=20";
+    fetch(endpoint, { headers: { Accept: "application/vnd.github+json" } })
+      .then((response) => {
+        if (!response.ok) throw new Error("GitHub API " + response.status);
+        return response.json();
+      })
+      .then((issues) => {
+        const approved = issues.filter((issue) => !issue.pull_request);
+        grid.replaceChildren();
+        if (!approved.length) {
+          grid.appendChild(tag("p", "guestbook-empty", "暂无已审核留言，欢迎提交第一条留言。"));
+          return;
+        }
+        approved.forEach((issue) => grid.appendChild(approvedMessage(issue)));
+      })
+      .catch(() => {
+        grid.replaceChildren(tag("p", "guestbook-empty", "留言暂时无法读取，请稍后再试。"));
+      });
+  }
+
   /* ---------- 整版页面切换（仿 Genesis：page-view 体系） ---------- */
   function initViews() {
     const views = Array.prototype.slice.call(document.querySelectorAll(".page-view"));
@@ -507,6 +608,7 @@
     renderFaq();
     renderJoin();
     renderFooter();
+    initGuestbook();
     initViews();
     initHeader();
     initReveal();

@@ -1,0 +1,33 @@
+name: Guestbook moderation labels
+
+on:
+  push:
+    paths:
+      - .github/workflows/guestbook-labels.yml
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  prepare:
+    if: github.event_name != 'issues' || startsWith(github.event.issue.title, '[留言]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare moderation labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create guestbook-pending --color D29922 --description "官网留言：待审核" --force
+          gh label create guestbook-approved --color 2DA44E --description "官网留言：已审核并公开" --force
+
+      - name: Mark a new guestbook message as pending
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: gh issue edit "$ISSUE_URL" --add-label guestbook-pending

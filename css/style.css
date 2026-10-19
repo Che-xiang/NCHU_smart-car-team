@@ -532,6 +532,66 @@ button { font-family: inherit; }
 .qr-ph b { font-weight: 400; font-size: 14px; color: rgba(240, 243, 248, 0.42); }
 .qr-ph span { font-size: 12px; padding: 0 16px; line-height: 1.8; }
 
+/* ---------- 留言板 ---------- */
+.guestbook-head { max-width: 780px; }
+.guestbook-layout {
+  display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  gap: clamp(42px, 7vw, 100px); align-items: start; margin-top: 52px;
+}
+.guestbook-intro h3 {
+  margin-top: 14px; font-size: clamp(28px, 4vw, 46px); font-weight: 600;
+  letter-spacing: -.02em;
+}
+.guestbook-intro > p:not(.kicker) { margin-top: 22px; color: var(--text-2); font-size: 15px; }
+.guestbook-note {
+  margin-top: 30px; padding: 20px 22px; border: 1px solid var(--line);
+  border-radius: 12px; background: rgba(255,255,255,.02);
+  display: flex; flex-direction: column; gap: 7px;
+}
+.guestbook-note strong { color: var(--acc); font-size: 13px; letter-spacing: .08em; }
+.guestbook-note span { color: var(--muted); font-size: 13px; line-height: 1.8; }
+.guestbook-form { display: flex; flex-direction: column; }
+.guestbook-form label { margin-bottom: 9px; font-size: 14px; font-weight: 600; color: var(--text-2); }
+.guestbook-form label:not(:first-child) { margin-top: 24px; }
+.guestbook-form label span { color: var(--muted); font-size: 12px; font-weight: 400; }
+.guestbook-form input, .guestbook-form textarea {
+  width: 100%; border: 1px solid var(--line-2); border-radius: 10px;
+  background: rgba(255,255,255,.025); color: var(--text);
+  padding: 14px 16px; font: inherit; outline: none;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.guestbook-form textarea { min-height: 190px; resize: vertical; }
+.guestbook-form input::placeholder, .guestbook-form textarea::placeholder { color: rgba(240,243,248,.28); }
+.guestbook-form input:focus, .guestbook-form textarea:focus {
+  border-color: rgba(125,211,252,.62); background: rgba(125,211,252,.035);
+  box-shadow: 0 0 0 3px rgba(125,211,252,.08);
+}
+.guestbook-form-foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 18px; }
+.guestbook-form-foot > span { color: var(--muted); font: 12px var(--mono); }
+.guestbook-form-foot .btn { padding: .72rem 1.7rem; font-size: 14px; }
+.guestbook-submit-note { margin-top: 12px; color: var(--muted); font-size: 12px; text-align: right; }
+.guestbook-submit-note.is-error { color: #f6a8a8; }
+.guestbook-public-head {
+  display: flex; align-items: end; justify-content: space-between; gap: 30px;
+  margin-top: clamp(70px, 10vw, 120px); padding-top: 38px; border-top: 1px solid var(--line);
+}
+.guestbook-public-head h3 { margin-top: 6px; font-size: 25px; }
+.guestbook-public-head > span { color: var(--muted); font-size: 12px; }
+.guestbook-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+.guestbook-card {
+  min-height: 132px; padding: 22px 24px; border: 1px solid var(--line);
+  border-radius: 12px; background: var(--panel); display: flex; flex-direction: column;
+}
+.guestbook-message { color: var(--text-2); font-size: 15px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.guestbook-meta { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: auto; padding-top: 20px; }
+.guestbook-meta strong { color: var(--acc); font-size: 13px; }
+.guestbook-meta a { color: var(--muted); font: 12px var(--mono); }
+.guestbook-meta a:hover { color: var(--text); }
+.guestbook-loading, .guestbook-empty {
+  grid-column: 1 / -1; padding: 34px; text-align: center; color: var(--muted);
+  border: 1px dashed var(--line-2); border-radius: 12px; font-size: 14px;
+}
+
 /* ---------- 页脚（并入加入页末尾） ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 64px 0 40px; margin-top: 90px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 0.8fr 1.1fr; gap: 48px; }
@@ -593,6 +653,7 @@ button { font-family: inherit; }
   .stats-strip { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
   .stat:nth-child(3) { border-left: 0; }
   .stat:nth-child(even) { border-left: 1px solid var(--line); }
+  .guestbook-layout { grid-template-columns: 1fr; gap: 42px; }
 }
 @media (max-width: 720px) {
   .nav-toggle { display: flex; }
@@ -616,6 +677,11 @@ button { font-family: inherit; }
   .honor-row { grid-template-columns: 1fr; }
   .honor-chip + .honor-chip { border-left: 0; border-top: 1px solid var(--line); }
   .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .guestbook-grid { grid-template-columns: 1fr; }
+  .guestbook-public-head { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .guestbook-form-foot { align-items: flex-start; flex-direction: column; }
+  .guestbook-form-foot .btn { width: 100%; }
+  .guestbook-submit-note { text-align: left; }
   .block-title { margin-top: 46px; }
   .notice { font-size: 12px; }
   .section.page-view { padding-top: 100px; padding-bottom: 60px; }
