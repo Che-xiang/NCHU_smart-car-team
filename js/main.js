@@ -341,6 +341,21 @@
 
   /* ---------- 加入页 ---------- */
   function renderJoin() {
+    const notice = $("#selectionNotice");
+    const selection = DATA.join.selection;
+    if (notice && selection) {
+      const card = tag("article", "selection-notice");
+      const copy = tag("div", "selection-copy");
+      copy.appendChild(tag("span", "selection-tag", selection.tag));
+      copy.appendChild(tag("h3", "", selection.title));
+      copy.appendChild(tag("p", "", selection.text));
+      const link = tag("a", "btn btn-primary", selection.button || "查看比赛规则 ↗");
+      link.href = selection.href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      card.append(copy, link);
+      notice.appendChild(card);
+    }
     const list = $("#joinList");
     (DATA.join.items || []).forEach((it) => {
       const row = tag("div", "join-item");
@@ -502,6 +517,9 @@
       });
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
+      if (id === "home") {
+        requestAnimationFrame(() => window.dispatchEvent(new CustomEvent("homeview:show")));
+      }
       /* 关闭移动端展开菜单 */
       const links = $("#navLinks");
       links.classList.remove("open");
