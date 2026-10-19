@@ -30,8 +30,7 @@
   function distinct(items, key) { return [...new Set(items.map(item => item[key]))]; }
   function editionItems(id) { return records.filter(item => item.edition === id); }
   function thumbnailPath(item) {
-    if (item.thumbnail) return item.thumbnail;
-    return item.image.replace("assets/images/honors/", "assets/images/honors-thumbs/").replace(/\.jpe?g$/i, ".webp");
+    return item.thumbnail || item.image;
   }
 
   const heading = el("div", "archive-heading");
