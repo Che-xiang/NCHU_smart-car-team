@@ -441,10 +441,10 @@
       if (event.key === "ArrowRight") showViewerItem(viewerIndex + 1);
     });
     document.addEventListener("click", (event) => {
-      const anchor = event.target.closest("#tech a[href], #news a[href]");
+      const anchor = event.target.closest("#tech a[href], #news a[href], #competition a[href]");
       if (!anchor || !imagePattern.test(anchor.getAttribute("href") || "")) return;
       event.preventDefault();
-      const section = anchor.closest("#tech, #news");
+      const section = anchor.closest("#tech, #news, #competition");
       openViewer(anchor, section, true);
     });
   }
@@ -511,9 +511,9 @@
     }
 
     if (current.photoViewer && current.photoSrc) {
-      const anchor = Array.from(document.querySelectorAll("#tech a[href], #news a[href]"))
+      const anchor = Array.from(document.querySelectorAll("#tech a[href], #news a[href], #competition a[href]"))
         .find((node) => node.href === current.photoSrc);
-      if (anchor && viewer && viewer.hidden) openViewer(anchor, anchor.closest("#tech, #news"), false);
+      if (anchor && viewer && viewer.hidden) openViewer(anchor, anchor.closest("#tech, #news, #competition"), false);
     } else {
       closeViewer(true);
     }
