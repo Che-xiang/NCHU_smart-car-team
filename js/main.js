@@ -37,12 +37,12 @@
       (ICON_PATH[key] || ICON_PATH.dot) + "</svg>";
   }
 
-  /* ---------- 示例提示胶囊 ---------- */
+  /* ---------- 网站说明提示 ---------- */
   function renderNotice() {
     const box = $("#siteNotice");
     if (!box || !DATA.status || !DATA.status.enabled) return;
     box.hidden = false;
-    box.querySelector(".notice-text").textContent = DATA.status.text || "示例站点";
+    box.querySelector(".notice-text").textContent = DATA.status.text || "车队自建网站";
     const close = box.querySelector(".notice-close");
     const hide = () => box.classList.add("hide");
     close.addEventListener("click", hide);
@@ -383,7 +383,7 @@
       qrBox.appendChild(tag("p", "qr-tip", q.tip || "SCAN TO JOIN"));
     } else {
       const ph = tag("div", "qr-ph");
-      ph.appendChild(tag("b", "", "QR 占位"));
+      ph.appendChild(tag("b", "", "请通过招新群联系我们"));
       ph.appendChild(tag("span", "", (q && q.tip) || ""));
       qrBox.appendChild(ph);
     }
@@ -639,5 +639,6 @@
     boot();
   }
 })();
+
 
 
