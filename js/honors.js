@@ -34,7 +34,7 @@
   }
 
   const heading = el("div", "archive-heading");
-  heading.append(el("p", "kicker", "HONORS ARCHIVE"), el("h3", "", "每一份荣誉，都有迹可循"),
+  heading.append(el("h2", "", "每一份荣誉，都有迹可循"),
     el("p", "archive-muted", "选择届次，再按赛事阶段、组别和队伍查看团队与队员获奖证书。个人证书未注明队名时，归入“队伍未标注”，不推断所属队伍。"));
   const editions = el("div", "archive-editions");
   editions.setAttribute("aria-label", "选择竞赛届次");
@@ -53,7 +53,7 @@
   const panel = el("div", "archive-panel");
   panel.hidden = true;
   const panelHead = el("div", "archive-panel-head");
-  const panelTitle = el("h3", "");
+  const panelTitle = el("h2", "");
   panelTitle.tabIndex = -1;
   const back = button("archive-back", "← 返回全部届次", () => {
     panel.hidden = true;
@@ -158,7 +158,7 @@
         const certificates = items.filter(item => item.role === role);
         if (!certificates.length) return;
         const section = el("section", "archive-role");
-        section.append(el("h4", "", label + " · " + certificates.length + "张"));
+        section.append(el("h3", "", label + " · " + certificates.length + "张"));
         const grid = el("div", "archive-certificate-grid");
         section.append(grid);
         let shown = 0;

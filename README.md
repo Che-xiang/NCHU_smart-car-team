@@ -1,72 +1,66 @@
-# 南昌航空大学智能车队（智能车平台）官网 v3
+# 南昌航空大学智能车队（智能车平台）官网
 
-纯静态网页项目：**HTML + CSS + JavaScript，无框架、无构建步骤、无任何网络依赖**（可完全离线运行）。
-赛历、动态等文字维护在 **`js/data.js`**；奖状目录维护在 **`js/honors-data.js`**；活动图库在 **`index.html`**。
+HTML、CSS 与原生 JavaScript 构成的静态站点，无框架、包管理或构建步骤。源代码仓库：[Che-xiang/NCHU_smart-car-team](https://github.com/Che-xiang/NCHU_smart-car-team)。
 
-## 文件结构
-
-```
-├── index.html            页面结构（通常不用改）
-├── css/style.css         全站样式（换主题色改 :root 顶部变量）
-├── js/
-│   ├── data.js             常规文字与数据
-│   ├── main.js          内容渲染 + 线性图标库（通常不用改）
-│   └── effects.js       多层视差 / 星尘 / 进度条（通常不用改）
-├── assets/
-│   ├── favicon.svg       站点小图标
-│   └── images/           奖状与活动图片目录
-└── README.md
-```
+主要内容和图片由站点本地文件提供，字体使用系统字体栈。公开留言通过 GitHub API 读取带有 `guestbook-approved` 标签的 Issues；提交留言会打开 GitHub 的 Issue 创建页，由访客确认并发布。因此，留言功能需要网络及相应的 GitHub 访问权限。
 
 ## 本地预览
 
-双击 `index.html` 用浏览器打开即可；或用 VS Code 的 “Live Server” 插件。
+在项目根目录运行：
 
-## v3 设计系统（高级感从哪来）
+```sh
+python3 -m http.server 8000
+```
 
-- **克制配色**：近黑底色 + 白 + 单一冰蓝强调色（`--acc: #7dd3fc`），金色只用于年份/勋章点缀
-- **叠层排版**：卡片网格奇数/偶数列错位（“叠”的观感）、细线面板、1px 顶部高光
-- **多层滚动视差**：带 `data-plx` 属性的元素以不同速率随滚动错层移动——
-  `数据属性 data-plx="0.26"`（内容层，移速较快）／`0.06`（赛道层）／`-0.12`（水印编号层）／`-0.10~-0.14`（背景光晕）
-  （改数值可调层次速度；删除属性 = 该层静止；手机端与“减少动态效果”下自动停用）
-- **线性图标系统**：全站无 emoji，图标为 24px 细线 SVG，data.js 里 `icon` 字段用关键字：
-  `plane / book / shield / target / pin / cap / flag / users / spark / camera`
-- 板块标题：编号水印（01–08）在内容层之后缓慢移动；FAQ 采用细线编辑风；表格去掉重色块
+浏览器打开 `http://localhost:8000`。直接打开 `index.html` 可浏览主要静态内容；HTTP 预览更接近实际托管环境。
 
-## 修改内容 = 改 data.js
+## 文件结构与职责
 
-奖状照片的届次、阶段、组别、队伍和人员分类单独维护在 **`js/honors-data.js`**，详细步骤见 **[竞赛荣誉维护说明](HONORS-GUIDE.md)**。仅上传奖状图片不会自动显示，需同时添加对应记录。
-
-| 位置 | 字段 |
+| 文件 | 职责 |
 |---|---|
-| 队训 / 统计数字 | `hero`（统计在首屏下方细线统计条） |
-| 滚动字幕 | `ticker` |
-| 关于 / 昌航基因徽章 / 车队名片 | `about`（`genes` 为校史信息，来自学校官网，可保留） |
-| 技术组别 | `team` |
-| 技术方向 | `tech` |
-| 荣誉统计 | `honors.chips` |
-| 历年赛况 | `competition.rows` |
-| 动态（可选配图字段 `img`） | `news` |
-| 常见问答 | `faq` |
-| 加入我们 / 二维码 | `join`（二维码：`hasImage: true` + 图片路径） |
-| 页脚联系方式 | `contact` |
-| 示例提示胶囊 | `status.enabled` → `false` |
+| `index.html` | 页面结构、首页内容入口、活动图库与共享页脚 |
+| `css/style.css` | 基础样式、布局、原有组件与图片查看器 |
+| `css/honors.css` | 荣誉档案与证书查看器 |
+| `css/theme.css` | 日间主题及主题切换控件的基础样式 |
+| `css/refinement.css` | 最后加载的视觉调整、最终主题变量与响应式规则 |
+| `js/data.js` | 常规内容、技术组别、作品、动态、问答、招新与联系方式 |
+| `js/honors-data.js` | 证书档案的届次及逐张证书记录 |
+| `js/main.js` | 内容渲染、整版导航、移动菜单和 GitHub 留言 |
+| `js/honors.js` | 荣誉档案筛选、搜索与证书查看 |
+| `js/interactions.js` | 技术及介绍详情、图片浏览交互 |
+| `js/theme.js` | 首次绘制前选择主题、切换主题与保存偏好 |
+| `js/effects.js` | 页面辅助动效；无对应元素时不启用相关效果 |
+| `assets/images/` | 作品、活动及证书图片 |
+| `DESIGN.md` | 从当前实现提取的视觉规范与基础令牌 |
+| `.impeccable/design.json` | 组件预览、动效、断点等补充信息 |
 
-改完保存 → 重新上传 → GitHub Pages 自动发布（约 1~2 分钟生效）。
+样式按 `style.css → honors.css → theme.css → refinement.css` 的顺序加载。维护当前配色、排版或响应式规则时，先查看最后一份样式表及选择器优先级，避免仅修改已被覆盖的旧声明。
 
-## 上线（GitHub Pages，免费）
+## 内容维护
 
-1. 注册 GitHub 账号（github.com，免费）；
-2. 新建仓库（Repository），名字如 `smart-car-team`，选 Public；
-3. 把本文件夹全部内容上传到仓库（网页端 Upload files，或 GitHub Desktop）；
-4. 仓库 Settings → Pages → Source 选 `Deploy from a branch` → Branch 选 `main` → Save；
-5. 等待 1~2 分钟，访问 `https://你的用户名.github.io/smart-car-team/`。
+| 内容 | 维护位置 |
+|---|---|
+| 队训、统计数字 | `js/data.js` 的 `hero` |
+| 车队介绍、校史信息、名片 | `about` |
+| 组织架构、技术方向 | `team`、`tech` |
+| 作品、学习路径、准备活动图片 | `featuredProjects`、`learningPath`、`preparationGallery` |
+| 荣誉摘要、历年赛况 | `honors`、`competition` |
+| 动态、常见问答 | `news`、`faq` |
+| 招新说明、二维码、联系方式 | `join`、`contact` |
+| 页脚车队自建网站说明 | `status`；`enabled` 控制显示 |
+| 证书分类与图片路径 | `js/honors-data.js`，详见 [竞赛荣誉维护说明](HONORS-GUIDE.md) |
+| 首页固定文案、首页主图、活动图库 | `index.html` |
 
-## 上线前必做
+`ticker` 保留在配置中；当前首页没有滚动字幕容器。新增图片时同时维护对应路径和说明；仅上传证书图片不会自动新增档案记录。
 
-- [ ] `js/data.js` 里所有“待补充 / 示例”内容替换为真实信息
-- [ ] `status.enabled` 改为 `false`（去掉右上角示例提示）
-- [ ] 成绩与证书核对一致；队员照片获得本人同意
-- [ ] 校徽如使用，遵循学校标识管理相关规定
+## 页面与主题
 
+导航使用 `#home`、`#tech` 等 URL 片段切换整版内容，支持浏览器前进、后退；共享页脚位于页面切换容器之外。移动菜单在宽度不超过 1080px 时启用，窄屏内容在 760px 及以下进一步重排。
 
+主题首次跟随系统偏好；手动切换后将选择保存在 `localStorage` 的 `nchu-theme` 项。无法访问本地存储时仍可切换。减少动态效果偏好会停用 CSS 动画与过渡。
+
+## 发布与检查
+
+将源文件更新到仓库后，通过仓库现有 GitHub Pages 配置发布。发布目录必须保留 `index.html` 与 `css/`、`js/`、`assets/` 的相对路径；不需要编译。
+
+内容更新后检查日间和夜间模式、手机导航、详情返回、图片查看与留言提示，并核对证书、数据和联系方式。样式或脚本变化时，同步更新 `index.html` 内对应资源的版本查询参数，便于浏览器获取新版本。

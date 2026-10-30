@@ -46,7 +46,6 @@
     const close = box.querySelector(".notice-close");
     const hide = () => box.classList.add("hide");
     close.addEventListener("click", hide);
-    setTimeout(hide, 16000);
   }
 
   /* ---------- 首页内容 ---------- */
@@ -69,10 +68,65 @@
     });
   }
 
+  /* Home is a curated entry into the existing archives, not a second data source. */
+  function renderHomeHighlights() {
+    const projects = $("#homeProjects");
+    (DATA.featuredProjects || []).forEach((item) => {
+      const link = tag("a", "home-project");
+      link.href = "#tech";
+      const frame = tag("div", "home-project-image");
+      const image = tag("img", "");
+      image.src = item.image;
+      image.alt = "第21届" + item.group + "组：" + item.name;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.width = item.width;
+      image.height = item.height;
+      frame.appendChild(image);
+      const body = tag("div", "home-project-copy");
+      body.append(tag("h3", "", item.group), tag("p", "", item.name));
+      link.append(frame, body);
+      projects.appendChild(link);
+    });
+    const news = $("#homeNews");
+    // Select existing stories by their editorial role; no copied dates or claims.
+    const items = [
+      (DATA.news || []).find(item => item.tag === "竞赛"),
+      (DATA.news || []).find(item => item.tag === "交流"),
+      (DATA.news || []).find(item => item.tag === "分享")
+    ].filter(Boolean);
+    items.forEach((item) => {
+      const link = tag("a", "home-news-item");
+      link.href = "#news";
+      const src = item.img || (item.images && item.images[0] && item.images[0].src);
+      if (src) {
+        const image = tag("img", "");
+        image.src = src;
+        image.alt = "";
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.width = 240;
+        image.height = 160;
+        link.appendChild(image);
+      }
+      const body = tag("div", "home-news-copy");
+      const meta = tag("p", "home-news-meta");
+      const date = tag("span", "", item.date);
+      meta.append(tag("span", "", item.tag), date);
+      body.append(meta, tag("h3", "", item.title), tag("p", "home-news-text", item.text));
+      link.appendChild(body);
+      news.appendChild(link);
+    });
+    if (DATA.join && DATA.join.selection) {
+      $("#homeSelection").textContent = DATA.join.selection.title + "，规则更新请关注在线文档。";
+    }
+  }
+
   let statsDone = false;
   function animateStats() {
     if (statsDone) return;
     statsDone = true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     document.querySelectorAll(".stat-num").forEach((el) => {
       const raw = el.dataset.raw || "";
       const m = raw.match(/^(\d+(?:\.\d+)?)(.*)$/);
@@ -117,7 +171,7 @@
     const ic = tag("div", "card-icon");
     ic.innerHTML = iconSvg(c.icon);
     card.appendChild(ic);
-    card.appendChild(tag("h4", "card-title", c.title));
+    card.appendChild(tag("h3", "card-title", c.title));
     card.appendChild(tag("p", "card-text", c.text));
     return card;
   }
@@ -139,7 +193,7 @@
       const card = tag("div", "card group-card");
       const head = tag("div", "group-head");
       head.appendChild(tag("div", "char-badge", g.tag));
-      head.appendChild(tag("h4", "card-title", g.name));
+      head.appendChild(tag("h3", "card-title", g.name));
       card.appendChild(head);
       card.appendChild(tag("p", "card-text", g.duty));
       const tags = tag("div", "tags");
@@ -155,7 +209,7 @@
     const techCard = (it) => {
       const card = tag("div", "card tech-card");
       card.appendChild(tag("div", "char-badge letter", it.tag));
-      card.appendChild(tag("h4", "card-title", it.name));
+      card.appendChild(tag("h2", "card-title", it.name));
       card.appendChild(tag("p", "card-text", it.desc));
       const tags = tag("div", "tags");
       (it.skills || []).forEach((s) => tags.appendChild(tag("span", "tag", s)));
@@ -166,7 +220,7 @@
   }
 
   function sectionTitle(title, english) {
-    const heading = tag("div", "block-title activity-heading");
+    const heading = tag("h2", "block-title activity-heading");
     heading.append(tag("span", "", title), tag("em", "", english));
     return heading;
   }
@@ -195,7 +249,7 @@
         image.height = item.height;
         link.appendChild(image);
         const body = tag("div", "project-body");
-        body.append(tag("p", "kicker", "第21届 · " + item.group), tag("h4", "", item.name), tag("p", "", item.text));
+        body.append(tag("h3", "", item.name), tag("p", "kicker", "第21届 · " + item.group), tag("p", "", item.text));
         const tags = tag("ul", "project-tags");
         (item.tags || []).forEach((value) => tags.appendChild(tag("li", "", value)));
         body.appendChild(tags);
@@ -212,7 +266,7 @@
       const grid = tag("div", "research-project-grid learning-path-grid");
       DATA.learningPath.forEach((item) => {
         const card = tag("article", "research-project");
-        card.append(tag("span", "project-date", item.step), tag("h4", "", item.name), tag("p", "", item.text));
+        card.append(tag("span", "project-date", item.step), tag("h3", "", item.name), tag("p", "", item.text));
         grid.appendChild(card);
       });
       techContainer.appendChild(grid);
@@ -319,7 +373,7 @@
       meta.appendChild(tag("span", "news-tag", n.tag));
       meta.appendChild(tag("span", "news-date", n.date));
       body.appendChild(meta);
-      body.appendChild(tag("h4", "news-title", n.title));
+      body.appendChild(tag("h2", "news-title", n.title));
       body.appendChild(tag("p", "news-text", n.text));
       card.appendChild(body);
       grid.appendChild(card);
@@ -396,6 +450,10 @@
     if (c.qq) $("#fcQQ").textContent = c.qq;
     if (c.email) $("#fcEmail").textContent = c.email;
     if (c.wechat) $("#fcWechat").textContent = c.wechat;
+    ["#fcEmail", "#fcWechat"].forEach((selector) => {
+      const item = $(selector);
+      if (!item.textContent || /待补充/.test(item.textContent)) item.parentElement.hidden = true;
+    });
     $("#copyrightLine").textContent =
       "© " + new Date().getFullYear() +
       " 南昌航空大学智能车队（智能车平台）· 页面由车队成员维护 · 以赛促学，笃行致远";
@@ -506,15 +564,22 @@
   function initViews() {
     const views = Array.prototype.slice.call(document.querySelectorAll(".page-view"));
     const navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+    let currentId = null;
 
     function show(id) {
       if (!id) id = "home";
       const target = document.getElementById(id);
       if (!target || !target.classList.contains("page-view")) return;
+      currentId = id;
+      document.body.dataset.page = id;
       views.forEach((v) => v.classList.toggle("is-active", v === target));
       navLinks.forEach((a) => {
         a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+        if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
       });
+      const title = target.querySelector(".sec-title");
+      document.title = (title ? title.textContent + " · " : "") + "南昌航空大学智能车队";
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
       if (id === "home") {
@@ -525,14 +590,24 @@
       links.classList.remove("open");
       $("#navToggle").setAttribute("aria-expanded", "false");
       $("#siteHeader").classList.remove("menu-open");
+      document.body.classList.remove("navigation-open");
+      $("#navToggle").setAttribute("aria-label", "打开菜单");
+      window.dispatchEvent(new CustomEvent("pageview:shown", { detail: { id } }));
     }
 
     /* 点击任意指向 page-view 的锚点 → 整版切换（导航 / 按钮 / 页脚链接 / 返回顶部） */
     document.addEventListener("click", (e) => {
       const a = e.target.closest('a[href^="#"]');
       if (!a) return;
+      if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
       const href = a.getAttribute("href");
       if (href === "#") { e.preventDefault(); return; }
+      if (href === "#mainContent") {
+        e.preventDefault();
+        $("#mainContent").focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        return;
+      }
       const id = href.slice(1);
       const el = document.getElementById(id);
       if (el && el.classList.contains("page-view")) {
@@ -543,7 +618,13 @@
     });
 
     window.addEventListener("hashchange", () => {
-      show(location.hash ? location.hash.slice(1) : "home");
+      const id = location.hash ? location.hash.slice(1) : "home";
+      if (id !== currentId) show(id);
+    });
+
+    window.addEventListener("popstate", () => {
+      const id = location.hash ? location.hash.slice(1) : "home";
+      if (id !== currentId) show(id);
     });
 
     show(location.hash ? location.hash.slice(1) : "home");
@@ -563,7 +644,26 @@
       const open = links.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
       header.classList.toggle("menu-open", open);
+      document.body.classList.toggle("navigation-open", open);
+      toggle.setAttribute("aria-label", open ? "关闭菜单" : "打开菜单");
     });
+    function closeMenu() {
+      links.classList.remove("open");
+      header.classList.remove("menu-open");
+      document.body.classList.remove("navigation-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "打开菜单");
+    }
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && links.classList.contains("open")) {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (!header.contains(event.target) && links.classList.contains("open")) closeMenu();
+    });
+    window.matchMedia("(min-width: 1081px)").addEventListener("change", closeMenu);
   }
 
   /* ---------- 显现动画：首次进入某页时才淡入 ---------- */
@@ -615,6 +715,7 @@
   function boot() {
     renderNotice();
     renderHero();
+    renderHomeHighlights();
     renderTicker();
     renderAbout();
     renderTeam();

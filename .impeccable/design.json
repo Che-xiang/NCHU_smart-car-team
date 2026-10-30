@@ -1,0 +1,497 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T17:38:36.974259+00:00",
+  "title": "Design System: NCHU Smart Car Team",
+  "extensions": {
+    "colorMeta": {
+      "acc": {
+        "role": "primary",
+        "displayName": "Acc",
+        "tonalRamp": [
+          "oklch(15.0% 0.0270 228.9)",
+          "oklch(26.5% 0.0485 228.9)",
+          "oklch(38.0% 0.0638 228.9)",
+          "oklch(49.0% 0.0696 228.9)",
+          "oklch(60.0% 0.0655 228.9)",
+          "oklch(71.5% 0.0517 228.9)",
+          "oklch(83.0% 0.0310 228.9)",
+          "oklch(95.0% 0.0075 228.9)"
+        ]
+      },
+      "acc-soft": {
+        "role": "primary",
+        "displayName": "Acc Soft",
+        "tonalRamp": [
+          "oklch(15.0% 0.0136 238.1)",
+          "oklch(26.5% 0.0244 238.1)",
+          "oklch(38.0% 0.0321 238.1)",
+          "oklch(49.0% 0.0350 238.1)",
+          "oklch(60.0% 0.0330 238.1)",
+          "oklch(71.5% 0.0260 238.1)",
+          "oklch(83.0% 0.0156 238.1)",
+          "oklch(95.0% 0.0038 238.1)"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Bg",
+        "tonalRamp": [
+          "oklch(15.0% 0.0048 254.2)",
+          "oklch(26.5% 0.0086 254.2)",
+          "oklch(38.0% 0.0113 254.2)",
+          "oklch(49.0% 0.0123 254.2)",
+          "oklch(60.0% 0.0116 254.2)",
+          "oklch(71.5% 0.0091 254.2)",
+          "oklch(83.0% 0.0055 254.2)",
+          "oklch(95.0% 0.0013 254.2)"
+        ]
+      },
+      "bg-2": {
+        "role": "neutral",
+        "displayName": "Bg 2",
+        "tonalRamp": [
+          "oklch(15.0% 0.0071 255.7)",
+          "oklch(26.5% 0.0128 255.7)",
+          "oklch(38.0% 0.0169 255.7)",
+          "oklch(49.0% 0.0184 255.7)",
+          "oklch(60.0% 0.0174 255.7)",
+          "oklch(71.5% 0.0137 255.7)",
+          "oklch(83.0% 0.0082 255.7)",
+          "oklch(95.0% 0.0020 255.7)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "tonalRamp": [
+          "oklch(15.0% 0.0074 252.1)",
+          "oklch(26.5% 0.0132 252.1)",
+          "oklch(38.0% 0.0174 252.1)",
+          "oklch(49.0% 0.0190 252.1)",
+          "oklch(60.0% 0.0179 252.1)",
+          "oklch(71.5% 0.0141 252.1)",
+          "oklch(83.0% 0.0085 252.1)",
+          "oklch(95.0% 0.0021 252.1)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15.0% 0.0097 255.7)",
+          "oklch(26.5% 0.0173 255.7)",
+          "oklch(38.0% 0.0228 255.7)",
+          "oklch(49.0% 0.0249 255.7)",
+          "oklch(60.0% 0.0235 255.7)",
+          "oklch(71.5% 0.0185 255.7)",
+          "oklch(83.0% 0.0111 255.7)",
+          "oklch(95.0% 0.0027 255.7)"
+        ]
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Line 2",
+        "tonalRamp": [
+          "oklch(15.0% 0.0119 255.7)",
+          "oklch(26.5% 0.0214 255.7)",
+          "oklch(38.0% 0.0281 255.7)",
+          "oklch(49.0% 0.0307 255.7)",
+          "oklch(60.0% 0.0289 255.7)",
+          "oklch(71.5% 0.0228 255.7)",
+          "oklch(83.0% 0.0137 255.7)",
+          "oklch(95.0% 0.0033 255.7)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text",
+        "tonalRamp": [
+          "oklch(15.0% 0.0029 241.7)",
+          "oklch(26.5% 0.0053 241.7)",
+          "oklch(38.0% 0.0069 241.7)",
+          "oklch(49.0% 0.0076 241.7)",
+          "oklch(60.0% 0.0071 241.7)",
+          "oklch(71.5% 0.0056 241.7)",
+          "oklch(83.0% 0.0034 241.7)",
+          "oklch(95.0% 0.0008 241.7)"
+        ]
+      },
+      "text-2": {
+        "role": "neutral",
+        "displayName": "Text 2",
+        "tonalRamp": [
+          "oklch(15.0% 0.0087 250.3)",
+          "oklch(26.5% 0.0157 250.3)",
+          "oklch(38.0% 0.0206 250.3)",
+          "oklch(49.0% 0.0225 250.3)",
+          "oklch(60.0% 0.0212 250.3)",
+          "oklch(71.5% 0.0167 250.3)",
+          "oklch(83.0% 0.0100 250.3)",
+          "oklch(95.0% 0.0024 250.3)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15.0% 0.0116 251.5)",
+          "oklch(26.5% 0.0208 251.5)",
+          "oklch(38.0% 0.0274 251.5)",
+          "oklch(49.0% 0.0299 251.5)",
+          "oklch(60.0% 0.0281 251.5)",
+          "oklch(71.5% 0.0222 251.5)",
+          "oklch(83.0% 0.0133 251.5)",
+          "oklch(95.0% 0.0032 251.5)"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Gold",
+        "tonalRamp": [
+          "oklch(15.0% 0.0287 75.9)",
+          "oklch(26.5% 0.0516 75.9)",
+          "oklch(38.0% 0.0679 75.9)",
+          "oklch(49.0% 0.0741 75.9)",
+          "oklch(60.0% 0.0698 75.9)",
+          "oklch(71.5% 0.0551 75.9)",
+          "oklch(83.0% 0.0330 75.9)",
+          "oklch(95.0% 0.0080 75.9)"
+        ]
+      },
+      "light-acc": {
+        "role": "primary",
+        "displayName": "Light Acc",
+        "tonalRamp": [
+          "oklch(15.0% 0.0391 235.1)",
+          "oklch(26.5% 0.0703 235.1)",
+          "oklch(38.0% 0.0925 235.1)",
+          "oklch(49.0% 0.1009 235.1)",
+          "oklch(60.0% 0.0951 235.1)",
+          "oklch(71.5% 0.0750 235.1)",
+          "oklch(83.0% 0.0449 235.1)",
+          "oklch(95.0% 0.0109 235.1)"
+        ]
+      },
+      "light-acc-soft": {
+        "role": "primary",
+        "displayName": "Light Acc Soft",
+        "tonalRamp": [
+          "oklch(15.0% 0.0066 225.2)",
+          "oklch(26.5% 0.0118 225.2)",
+          "oklch(38.0% 0.0155 225.2)",
+          "oklch(49.0% 0.0169 225.2)",
+          "oklch(60.0% 0.0160 225.2)",
+          "oklch(71.5% 0.0126 225.2)",
+          "oklch(83.0% 0.0075 225.2)",
+          "oklch(95.0% 0.0018 225.2)"
+        ]
+      },
+      "light-bg": {
+        "role": "neutral",
+        "displayName": "Light Bg",
+        "tonalRamp": [
+          "oklch(15.0% 0.0007 247.8)",
+          "oklch(26.5% 0.0012 247.8)",
+          "oklch(38.0% 0.0016 247.8)",
+          "oklch(49.0% 0.0017 247.8)",
+          "oklch(60.0% 0.0016 247.8)",
+          "oklch(71.5% 0.0013 247.8)",
+          "oklch(83.0% 0.0008 247.8)",
+          "oklch(95.0% 0.0002 247.8)"
+        ]
+      },
+      "light-bg-2": {
+        "role": "neutral",
+        "displayName": "Light Bg 2",
+        "tonalRamp": [
+          "oklch(15.0% 0.0023 239.8)",
+          "oklch(26.5% 0.0041 239.8)",
+          "oklch(38.0% 0.0054 239.8)",
+          "oklch(49.0% 0.0059 239.8)",
+          "oklch(60.0% 0.0056 239.8)",
+          "oklch(71.5% 0.0044 239.8)",
+          "oklch(83.0% 0.0026 239.8)",
+          "oklch(95.0% 0.0006 239.8)"
+        ]
+      },
+      "light-panel": {
+        "role": "neutral",
+        "displayName": "Light Panel",
+        "tonalRamp": [
+          "oklch(15.0% 0.0000 89.9)",
+          "oklch(26.5% 0.0000 89.9)",
+          "oklch(38.0% 0.0000 89.9)",
+          "oklch(49.0% 0.0000 89.9)",
+          "oklch(60.0% 0.0000 89.9)",
+          "oklch(71.5% 0.0000 89.9)",
+          "oklch(83.0% 0.0000 89.9)",
+          "oklch(95.0% 0.0000 89.9)"
+        ]
+      },
+      "light-line": {
+        "role": "neutral",
+        "displayName": "Light Line",
+        "tonalRamp": [
+          "oklch(15.0% 0.0043 243.7)",
+          "oklch(26.5% 0.0078 243.7)",
+          "oklch(38.0% 0.0103 243.7)",
+          "oklch(49.0% 0.0112 243.7)",
+          "oklch(60.0% 0.0106 243.7)",
+          "oklch(71.5% 0.0083 243.7)",
+          "oklch(83.0% 0.0050 243.7)",
+          "oklch(95.0% 0.0012 243.7)"
+        ]
+      },
+      "light-line-2": {
+        "role": "neutral",
+        "displayName": "Light Line 2",
+        "tonalRamp": [
+          "oklch(15.0% 0.0083 243.5)",
+          "oklch(26.5% 0.0149 243.5)",
+          "oklch(38.0% 0.0196 243.5)",
+          "oklch(49.0% 0.0214 243.5)",
+          "oklch(60.0% 0.0202 243.5)",
+          "oklch(71.5% 0.0159 243.5)",
+          "oklch(83.0% 0.0095 243.5)",
+          "oklch(95.0% 0.0023 243.5)"
+        ]
+      },
+      "light-text": {
+        "role": "neutral",
+        "displayName": "Light Text",
+        "tonalRamp": [
+          "oklch(15.0% 0.0151 245.2)",
+          "oklch(26.5% 0.0270 245.2)",
+          "oklch(38.0% 0.0356 245.2)",
+          "oklch(49.0% 0.0388 245.2)",
+          "oklch(60.0% 0.0366 245.2)",
+          "oklch(71.5% 0.0288 245.2)",
+          "oklch(83.0% 0.0173 245.2)",
+          "oklch(95.0% 0.0042 245.2)"
+        ]
+      },
+      "light-text-2": {
+        "role": "neutral",
+        "displayName": "Light Text 2",
+        "tonalRamp": [
+          "oklch(15.0% 0.0161 248.8)",
+          "oklch(26.5% 0.0288 248.8)",
+          "oklch(38.0% 0.0380 248.8)",
+          "oklch(49.0% 0.0414 248.8)",
+          "oklch(60.0% 0.0390 248.8)",
+          "oklch(71.5% 0.0308 248.8)",
+          "oklch(83.0% 0.0184 248.8)",
+          "oklch(95.0% 0.0045 248.8)"
+        ]
+      },
+      "light-muted": {
+        "role": "neutral",
+        "displayName": "Light Muted",
+        "tonalRamp": [
+          "oklch(15.0% 0.0148 244.5)",
+          "oklch(26.5% 0.0266 244.5)",
+          "oklch(38.0% 0.0350 244.5)",
+          "oklch(49.0% 0.0382 244.5)",
+          "oklch(60.0% 0.0360 244.5)",
+          "oklch(71.5% 0.0284 244.5)",
+          "oklch(83.0% 0.0170 244.5)",
+          "oklch(95.0% 0.0041 244.5)"
+        ]
+      },
+      "light-gold": {
+        "role": "secondary",
+        "displayName": "Light Gold",
+        "tonalRamp": [
+          "oklch(15.0% 0.0355 68.3)",
+          "oklch(26.5% 0.0638 68.3)",
+          "oklch(38.0% 0.0839 68.3)",
+          "oklch(49.0% 0.0915 68.3)",
+          "oklch(60.0% 0.0862 68.3)",
+          "oklch(71.5% 0.0680 68.3)",
+          "oklch(83.0% 0.0407 68.3)",
+          "oklch(95.0% 0.0099 68.3)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Home title",
+        "purpose": "Observed responsive home-title scale; inherits the current platform stack."
+      },
+      "headline": {
+        "displayName": "Route heading",
+        "purpose": "Left-aligned route titles."
+      },
+      "title": {
+        "displayName": "Content title",
+        "purpose": "Reading-card headings; editorial cards have local variants."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Root Chinese-capable reading typography."
+      },
+      "label": {
+        "displayName": "Metadata",
+        "purpose": "Subordinate dates, tags and captions."
+      }
+    },
+    "shadows": [
+      {
+        "name": "photo-viewer-dark",
+        "value": "0 30px 90px rgba(0,0,0,.7)",
+        "purpose": "Existing photo-viewer shell only; css/style.css."
+      },
+      {
+        "name": "viewer-light",
+        "value": "0 20px 60px rgba(22,45,75,.18)",
+        "purpose": "Existing day-theme photo and archive viewer shells; css/theme.css."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Final shared easing."
+      },
+      {
+        "name": "surface-in",
+        "value": ".45s",
+        "purpose": "Page fade from opacity .78 to 1."
+      },
+      {
+        "name": "image-zoom",
+        "value": ".8s",
+        "purpose": "Home photograph hover to scale(1.025)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "All CSS animation and transition disabled when the reduce preference matches."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-header",
+        "value": "1080px"
+      },
+      {
+        "name": "stacked-reading",
+        "value": "760px"
+      },
+      {
+        "name": "narrow-brand",
+        "value": "360px"
+      },
+      {
+        "name": "archive-columns",
+        "value": "800px"
+      },
+      {
+        "name": "archive-narrow",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default dark primary action; day-theme selector precedence preserves its inverted fill in source.",
+      "html": "<button class=\"ds-primary\">探索我们的作品 <svg width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M4 12h15M13 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:50px;padding:12px 24px;border:1px solid transparent;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans, sans-serif);transition:background .25s ease,border-color .25s ease,transform .25s ease;background:var(--text);color:var(--bg)}.ds-primary:hover{background:var(--acc)}.ds-primary:focus-visible{outline:2px solid var(--acc);outline-offset:5px;}.ds-primary:active{transform:scale(.98)} @media(prefers-reduced-motion:reduce){.ds-primary{transition:none;animation:none}} :host-context(html[data-theme=\"light\"]) .ds-primary:hover{background:var(--text);color:var(--bg)}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Bordered supporting ghost action with a soft accent hover surface.",
+      "html": "<button class=\"ds-ghost\">了解更多</button>",
+      "css": ".ds-ghost{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:50px;padding:12px 24px;border:1px solid transparent;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans, sans-serif);transition:background .25s ease,border-color .25s ease,transform .25s ease;background:transparent;border-color:var(--line-2);color:var(--text)}.ds-ghost:hover{background:var(--acc-soft);border-color:var(--acc)}.ds-ghost:focus-visible{outline:2px solid var(--acc);outline-offset:5px;}.ds-ghost:active{transform:scale(.98)} @media(prefers-reduced-motion:reduce){.ds-ghost{transition:none;animation:none}}"
+    },
+    {
+      "name": "Guestbook Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Labeled reading-sized field with native text entry and explicit keyboard focus.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-message\">留言内容</label><textarea class=\"ds-field\" id=\"ds-message\" placeholder=\"写下想对车队说的话\"></textarea>",
+      "css": ".ds-field-label{display:block;margin-bottom:9px;font-size:14px;font-weight:600;color:var(--text-2);font-family:var(--sans, sans-serif);}.ds-field{width:100%;min-height:190px;resize:vertical;padding:14px 16px;border:1px solid var(--line-2);border-radius:8px;background:var(--bg);color:var(--text);font-size:15px;line-height:1.8;caret-color:var(--acc);font-family:var(--sans, sans-serif);transition:border-color .2s ease,background .2s ease}.ds-field::placeholder{color:var(--muted)}.ds-field:focus{border-color:rgba(125,211,252,.62);background:rgba(125,211,252,.035)}.ds-field:focus-visible{outline:2px solid var(--acc);outline-offset:5px;} @media(prefers-reduced-motion:reduce){.ds-field,.ds-field-label{transition:none;animation:none}}"
+    },
+    {
+      "name": "Desktop Navigation",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Current route uses text contrast and an accent underline; expanded menu styling remains in source.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"主导航\"><a class=\"ds-nav-link\" aria-current=\"page\" href=\"#home\">首页</a><a class=\"ds-nav-link\" href=\"#tech\">技术</a><a class=\"ds-nav-link\" href=\"#join\">加入</a></nav>",
+      "css": ".ds-nav{display:flex;gap:0;border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--sans, sans-serif);}.ds-nav-link{position:relative;display:block;padding:12px 10px;font-size:13px;color:var(--text-2);text-decoration:none;transition:color .2s ease}.ds-nav-link:after{content:\"\";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--acc);transform:scaleX(0);transition:transform .25s ease}.ds-nav-link:hover,.ds-nav-link[aria-current]{color:var(--text)}.ds-nav-link[aria-current]:after{transform:scaleX(1)}.ds-nav-link:focus-visible{outline:2px solid var(--acc);outline-offset:5px;} @media(prefers-reduced-motion:reduce){.ds-nav,.ds-nav-link{transition:none;animation:none}}"
+    },
+    {
+      "name": "Project Tag",
+      "kind": "chip",
+      "refersTo": "project-tag",
+      "description": "Noninteractive project metadata.",
+      "html": "<span class=\"ds-tag\">运动控制</span>",
+      "css": ".ds-tag{display:inline-block;background:var(--bg-2);color:var(--text-2);border-radius:4px;padding:4px 9px;font-size:11px;line-height:1.8;font-family:var(--sans, sans-serif);} @media(prefers-reduced-motion:reduce){.ds-tag{transition:none;animation:none}}"
+    },
+    {
+      "name": "Reading Card",
+      "kind": "card",
+      "refersTo": "content-card",
+      "description": "Flat content entry with a top divider and accent border on hover.",
+      "html": "<a class=\"ds-card\" href=\"#tech\"><h3 class=\"ds-card-title\">技术方向</h3><p class=\"ds-card-copy\">从感知到控制，从独立模块到整车协同。</p></a>",
+      "css": ".ds-card{display:flex;flex-direction:column;gap:16px;border-top:1px solid var(--line);padding:28px 0;background:transparent;color:var(--text);text-decoration:none;font-family:var(--sans, sans-serif);transition:border-color .25s ease}.ds-card:hover{border-color:var(--acc)}.ds-card:focus-visible{outline:2px solid var(--acc);outline-offset:5px;}.ds-card-title{margin:0;font-size:20px;font-weight:600;line-height:1.5}.ds-card-copy{margin:0;color:var(--text-2);font-size:14px;line-height:1.95} @media(prefers-reduced-motion:reduce){.ds-card-title,.ds-card,.ds-card-copy{transition:none;animation:none}}"
+    },
+    {
+      "name": "Archive Stage Filter",
+      "kind": "button",
+      "refersTo": "archive-stage",
+      "description": "Pressable archive filter; aria-pressed carries selected state.",
+      "html": "<button class=\"ds-stage\" aria-pressed=\"true\">全国赛</button>",
+      "css": ".ds-stage{min-height:44px;border:1px solid var(--line-2);border-radius:8px;background:var(--bg-2);color:var(--text-2);padding:10px 16px;font-size:14px;cursor:pointer;font-family:var(--sans, sans-serif);}.ds-stage[aria-pressed=\"true\"]{border-color:var(--acc);background:var(--acc-soft);color:var(--acc)}.ds-stage:focus-visible{outline:2px solid var(--acc);outline-offset:5px;} @media(prefers-reduced-motion:reduce){.ds-stage{transition:none;animation:none}}"
+    },
+    {
+      "name": "Form Panel",
+      "kind": "custom",
+      "refersTo": "form-panel",
+      "description": "Enclosed guestbook surface, distinct from unboxed reading cards.",
+      "html": "<section class=\"ds-form-panel\"><h2 class=\"ds-panel-title\">公开留言</h2><p class=\"ds-panel-note\">提交后会打开 GitHub，请确认内容并完成发布。</p></section>",
+      "css": ".ds-form-panel{padding:32px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);font-family:var(--sans, sans-serif);}.ds-panel-title{margin:0;font-size:25px;font-weight:700;line-height:1.4}.ds-panel-note{margin:18px 0 0;font-size:12px;line-height:1.8;color:var(--muted)} @media(prefers-reduced-motion:reduce){.ds-panel-note,.ds-form-panel,.ds-panel-title{transition:none;animation:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Engineering photography and clear reading",
+    "overview": "This is a record of the implemented visual system, not a new identity or an inferred user commitment. The existing charcoal and ice-blue palette remains, paired with an off-white day theme. Real team vehicles, activities, and certificates provide the main visual evidence.\n\nPages use left-aligned headings, readable text, generous section spacing, and thin separators. The home page combines an asymmetric introduction and engineering photograph with direct routes to projects, records, news, and joining. Detail pages use quieter text-led layouts. These are distinct page compositions within the same system.",
+    "keyCharacteristics": [
+      "Real engineering photography with captions and image viewing.",
+      "Paired dark and light semantic colors.",
+      "Flat content surfaces with thin rules and restrained accents.",
+      "Responsive reading layouts and explicit keyboard focus.",
+      "Short state transitions with reduced-motion support."
+    ],
+    "rules": [
+      {
+        "name": "The Theme Pair Rule",
+        "body": "Use semantic CSS variables for shared components so each role follows the current theme. The light palette is an explicit counterpart, not a filter applied to the dark screen.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Content Rule",
+        "body": "Use tonal changes and borders for ordinary content states; reserve overlay depth for image viewing.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use semantic theme variables for shared text, borders, surfaces, and focus.",
+      "**Do** preserve complete vehicle and certificate imagery where the component uses `contain`.",
+      "**Do** keep reading cards flat and use dividers to organize content.",
+      "**Do** keep keyboard focus visible and respect reduced-motion preferences.",
+      "**Do** check the final stylesheet cascade before changing inherited styles."
+    ],
+    "donts": [
+      "**Don't** restore decorative backdrop grids, staggered reading cards, or card-lift shadows removed by the final refinement.",
+      "**Don't** apply the home hero composition to every route; detail pages use a text-led layout.",
+      "**Don't** turn plain metadata tags into apparent interactive controls.",
+      "**Don't** treat old overridden CSS values as current design tokens."
+    ]
+  }
+}

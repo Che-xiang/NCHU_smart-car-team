@@ -184,7 +184,9 @@
   }
 
   function updateModalLock() {
-    document.body.classList.toggle("site-modal-open", Boolean(viewer && !viewer.hidden));
+    const open = Boolean(viewer && !viewer.hidden);
+    document.body.classList.toggle("site-modal-open", open);
+    document.querySelectorAll(".site-header, main, .site-footer").forEach((node) => { node.inert = open; });
   }
 
   function initTechDetails() {
@@ -237,21 +239,21 @@
     const badgeText = source && source.querySelector(".char-badge") ? source.querySelector(".char-badge").textContent : "T";
     const badge = make("div", "char-badge letter tech-detail-badge", badgeText);
     const kicker = make("p", "kicker", "TECHNICAL DIRECTION");
-    const title = make("h3", "tech-detail-title", name);
+    const title = make("h1", "tech-detail-title", name);
     title.tabIndex = -1;
     const lead = make("p", "tech-detail-lead", item.lead);
     head.append(badge, kicker, title, lead);
 
     const content = make("div", "tech-detail-grid");
     const learning = make("article", "tech-detail-block");
-    learning.append(make("h4", "", "主要学习内容"));
+    learning.append(make("h2", "", "主要学习内容"));
     const list = make("ul", "");
     item.learn.forEach((text) => list.append(make("li", "", text)));
     learning.append(list);
     const practice = make("article", "tech-detail-block");
-    practice.append(make("h4", "", "如何开展实践"), make("p", "", item.practice));
+    practice.append(make("h2", "", "如何开展实践"), make("p", "", item.practice));
     const result = make("article", "tech-detail-block");
-    result.append(make("h4", "", "可以形成的能力"), make("p", "", item.result));
+    result.append(make("h2", "", "可以形成的能力"), make("p", "", item.result));
     content.append(learning, practice, result);
 
     const tags = make("div", "tech-detail-tags");
@@ -336,14 +338,14 @@
     const badge = sourceBadge ? sourceBadge.cloneNode(true) : make("div", "char-badge letter", page === "about" ? "A" : "组");
     badge.classList.add("tech-detail-badge");
     const kicker = make("p", "kicker", config.kicker);
-    const title = make("h3", "tech-detail-title", name);
+    const title = make("h1", "tech-detail-title", name);
     title.tabIndex = -1;
     head.append(badge, kicker, title, make("p", "tech-detail-lead", item.lead));
 
     const content = make("div", "tech-detail-grid");
     item.sections.forEach((section) => {
       const block = make("article", "tech-detail-block");
-      block.append(make("h4", "", section.title));
+      block.append(make("h2", "", section.title));
       if (section.text) block.append(make("p", "", section.text));
       if (section.items && section.items.length) {
         const list = make("ul", "");
@@ -389,7 +391,7 @@
         seen.add(href);
         const image = anchor.querySelector("img");
         const card = anchor.closest("article, figure, .news-card");
-        const heading = card && card.querySelector("h3, h4, strong");
+        const heading = card && card.querySelector("h2, h3, h4, strong");
         const label = (image && image.alt) || (heading && heading.textContent) || anchor.getAttribute("aria-label") || "照片预览";
         return { href, label, anchor };
       })
@@ -436,15 +438,23 @@
     viewer.addEventListener("click", (event) => { if (event.target === viewer) closeViewer(false); });
     document.addEventListener("keydown", (event) => {
       if (viewer.hidden) return;
+      if (event.key === "Tab") {
+        const controls = Array.from(viewer.querySelectorAll("button:not(:disabled), a[href]"));
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
       if (event.key === "Escape") closeViewer(false);
       if (event.key === "ArrowLeft") showViewerItem(viewerIndex - 1);
       if (event.key === "ArrowRight") showViewerItem(viewerIndex + 1);
     });
     document.addEventListener("click", (event) => {
-      const anchor = event.target.closest("#tech a[href], #news a[href], #competition a[href]");
+      const anchor = event.target.closest("#home a[href], #tech a[href], #news a[href], #competition a[href]");
       if (!anchor || !imagePattern.test(anchor.getAttribute("href") || "")) return;
+      if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      const section = anchor.closest("#tech, #news, #competition");
+      const section = anchor.closest("#home, #tech, #news, #competition");
       openViewer(anchor, section, true);
     });
   }
@@ -511,9 +521,9 @@
     }
 
     if (current.photoViewer && current.photoSrc) {
-      const anchor = Array.from(document.querySelectorAll("#tech a[href], #news a[href], #competition a[href]"))
+      const anchor = Array.from(document.querySelectorAll("#home a[href], #tech a[href], #news a[href], #competition a[href]"))
         .find((node) => node.href === current.photoSrc);
-      if (anchor && viewer && viewer.hidden) openViewer(anchor, anchor.closest("#tech, #news, #competition"), false);
+      if (anchor && viewer && viewer.hidden) openViewer(anchor, anchor.closest("#home, #tech, #news, #competition"), false);
     } else {
       closeViewer(true);
     }
