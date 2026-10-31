@@ -572,6 +572,7 @@
       if (!target || !target.classList.contains("page-view")) return;
       currentId = id;
       document.body.dataset.page = id;
+      $("#homeReturn").hidden = id === "home";
       views.forEach((v) => v.classList.toggle("is-active", v === target));
       navLinks.forEach((a) => {
         a.classList.toggle("active", a.getAttribute("href") === "#" + id);
@@ -661,7 +662,9 @@
       }
     });
     document.addEventListener("click", (event) => {
-      if (!header.contains(event.target) && links.classList.contains("open")) closeMenu();
+      // Theme switching replaces its SVG icon before this event finishes bubbling.
+      const insideHeader = event.composedPath ? event.composedPath().includes(header) : header.contains(event.target);
+      if (!insideHeader && links.classList.contains("open")) closeMenu();
     });
     window.matchMedia("(min-width: 1081px)").addEventListener("change", closeMenu);
   }

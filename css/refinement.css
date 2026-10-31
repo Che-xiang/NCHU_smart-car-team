@@ -285,6 +285,18 @@ html[data-theme="light"] .site-header, html[data-theme="light"] .site-header.scr
 .notice-dot { width: 5px; height: 5px; background: var(--acc); box-shadow: none; }
 .notice-close { min-width: 32px; height: 32px; border-radius: 6px; background: transparent; font-size: 18px; color: var(--muted); }
 .totop { width: 44px; height: 44px; right: 22px; bottom: 22px; border-radius: 50%; background: var(--bg); color: var(--text); box-shadow: none; }
+.home-return {
+  position: fixed; left: max(20px, env(safe-area-inset-left));
+  bottom: calc(20px + env(safe-area-inset-bottom)); z-index: 140;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 48px; padding: 11px 18px; border: 1px solid var(--line-2);
+  border-radius: 8px; background: var(--bg); color: var(--text);
+  font-size: 14px; font-weight: 500; line-height: 1.5;
+}
+.home-return svg { width: 18px; height: 18px; flex: none; }
+.home-return:hover { background: var(--acc-soft); border-color: var(--acc); }
+.site-modal-open .home-return { display: none; }
+body:not([data-page="home"]) .site-footer { padding-bottom: calc(94px + env(safe-area-inset-bottom)); }
 .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
 @media (min-width: 1081px) and (max-width: 1230px) {
   .brand-text small { display: none; }
@@ -298,9 +310,11 @@ html[data-theme="light"] .site-header, html[data-theme="light"] .site-header.scr
   .brand-text { display: flex; }
   .nav { gap: 14px; }
   .nav-toggle { display: flex; }
-  .nav-links, html[data-theme="light"] .nav-links {
+  .nav-links {
     display: none; position: absolute; top: var(--header-h); inset-inline: 0; padding: 24px 32px 32px; margin: 0; background: var(--bg); border-bottom: 1px solid var(--line); max-height: calc(100dvh - var(--header-h)); overflow-y: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px;
   }
+  /* Theme overrides may color the menu, but must never override its open state. */
+  html[data-theme="light"] .nav-links { background: var(--bg); }
   .nav-links.open { display: grid; }
   .nav-links li { min-width: 0; width: 100%; }
   .nav-links a { min-height: 54px; border-bottom: 1px solid var(--line); padding: 15px 0; font-size: 15px; }
