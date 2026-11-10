@@ -175,7 +175,6 @@ html[data-theme="light"] .site-header, html[data-theme="light"] .site-header.scr
 .tech-card { min-height: 270px; }
 .honor-row { max-width: none; margin: 0 0 40px; border-block: 1px solid var(--line); }
 .honor-chip { text-align: left; padding: 24px; }
-.honor-chip:first-child { padding-left: 0; }
 .honor-chip b { font-family: var(--sans); font-size: 30px; color: var(--text); }
 .honor-chip span { font-family: var(--sans); color: var(--muted); letter-spacing: 0; }
 .honors-archive { margin-top: 40px; }
